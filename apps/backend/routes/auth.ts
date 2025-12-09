@@ -1,7 +1,7 @@
 import passport from "passport"
 import { Strategy as LocalStrategy } from "passport-local";
-import db from "../db"
-import { userRegisterSchema, userTable } from "../db/schema";
+import db from "../db/index.ts"
+import { userRegisterSchema, userTable } from "../db/schema.ts";
 import { eq } from "drizzle-orm";
 import argon2 from "argon2";
 import { Router } from "express"
@@ -121,7 +121,7 @@ router.post("/register", async (req, res, next) => {
       password: pwdHash
     }).returning();
 
-    if (!newUser || !newUser[0]) {
+    if (!newUser || !newUser[0] || newUser[0] == undefined) {
       throw new Error("failed to create new user")
     }
 

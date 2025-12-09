@@ -1,4 +1,5 @@
 import { index, int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { createInsertSchema } from "drizzle-zod";
 
 export const userTable = sqliteTable("users", {
   id: int().primaryKey({ autoIncrement: true }),
