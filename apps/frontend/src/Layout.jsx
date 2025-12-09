@@ -1,9 +1,10 @@
 import { Outlet } from "react-router";
+import Nav from "./components/Nav";
 
 export default function Layout(){
     return(
         <>
-            <h1>First line</h1>
+            <Nav/>
             <Outlet/>
             <h2>Second line</h2>
         </>

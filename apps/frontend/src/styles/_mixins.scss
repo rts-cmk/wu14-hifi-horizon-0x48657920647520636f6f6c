@@ -10,3 +10,32 @@
     };
 };
     
+@mixin screenSm(){
+    @media (width >= 40rem) {
+        @content
+    };
+};
+
+@mixin screenMd(){
+    @media (width >= 48rem) {
+        @content
+    };
+};
+
+@mixin screenLg(){
+    @media (width >= 64rem) {
+        @content
+    };
+};
+
+@mixin screenXl(){
+    @media (width >= 80rem) {
+        @content
+    };
+};
+
+@mixin screenXxl(){
+    @media (width >= 96rem) {
+        @content
+    };
+};
