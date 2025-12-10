@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router"
-import Layout from "./Layout"
+import Layout from "./layout"
 
 function App() {
 const browserRouter = createBrowserRouter([{
