@@ -48,9 +48,19 @@ export const productTable = sqliteTable("products", {
   summery: text(),
   description: text(),
   price: int().notNull(),
+  categoryId: int().notNull().references(() => productCategoryTable.id)
 }, (table) => [
   index("product_name_idx").on(table.name)
 ])
+
+export const productCategoryTable = sqliteTable("product_categories", {
+  id: int().primaryKey({ autoIncrement: true }),
+  name: text().notNull()
+})
+
+export const productCategoryRelations = relations(productCategoryTable, ({ many }) => ({
+  products: many(productTable)
+}))
 
 export const productVariantTable = sqliteTable("product_variants", {
   id: int().primaryKey({ autoIncrement: true }),
@@ -59,8 +69,12 @@ export const productVariantTable = sqliteTable("product_variants", {
   productId: int().references(() => productTable.id)
 })
 
-export const productRelations = relations(productTable, ({ many }) => ({
+export const productRelations = relations(productTable, ({ many, one }) => ({
   variants: many(productVariantTable),
+  category: one(productCategoryTable, {
+    fields: [productTable.categoryId],
+    references: [productCategoryTable.id]
+  })
 }))
 
 export const productVariantRelation = relations(productVariantTable, ({ one }) => ({
