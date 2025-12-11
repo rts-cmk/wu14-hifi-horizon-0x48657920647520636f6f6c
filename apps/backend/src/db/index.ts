@@ -1,6 +1,6 @@
 import { drizzle } from "drizzle-orm/libsql"
-import * as schema from "./schema.ts"
-import * as env from "../env.ts"
+import * as schema from "./schema.js"
+import * as env from "../env.js"
 
 const filename = env.DB_FILE_NAME;
 
