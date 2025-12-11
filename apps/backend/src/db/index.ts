@@ -1,8 +1,8 @@
 import { drizzle } from "drizzle-orm/libsql"
-import * as schema from "./schema.ts"
+import * as schema from "./schema.js"
+import * as env from "../env.js"
 
-
-const filename = process.env.DB_FILE_NAME;
+const filename = env.DB_FILE_NAME;
 
 if (!filename) throw new Error("DB: filename not found in the env")
 
