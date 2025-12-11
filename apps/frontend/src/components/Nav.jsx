@@ -1,8 +1,10 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLoaderData, useNavigate } from "react-router";
 import { IoAdd, IoCaretUpSharp, IoCart, IoClose, IoMenu, IoPerson, IoRemove, IoSearch } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Nav(){
+
+    const {categories: categoriesData} = useLoaderData()
 
     const [headerDisplay, setHeaderDisplay] = useState(false)
     const [searchbarDisplay, setSearchbarDisplay] = useState(false)
@@ -62,14 +64,11 @@ export default function Nav(){
                 <article className="categories" style={{display: categoriesDisplay ? "block" : "none"}}>
                     <h2 className="categories__title">Browse Categories</h2>
                     <ul className="categories-list">
-                        <li className="categories-list__category"><Link className="categories-list__link" to="/">Placeholder</Link></li>
-                        <li className="categories-list__category"><Link className="categories-list__link" to="/">Placeholder</Link></li>
-                        <li className="categories-list__category"><Link className="categories-list__link" to="/">Placeholder</Link></li>
-                        <li className="categories-list__category"><Link className="categories-list__link" to="/">Placeholder</Link></li>
-                        <li className="categories-list__category"><Link className="categories-list__link" to="/">Placeholder</Link></li>
-                        <li className="categories-list__category"><Link className="categories-list__link" to="/">Placeholder</Link></li>
-                        <li className="categories-list__category"><Link className="categories-list__link" to="/">Placeholder</Link></li>
-                        <li className="categories-list__category"><Link className="categories-list__link" to="/">Placeholder</Link></li>
+                        {
+                            categoriesData.map((category) => {
+                                return <li key={category} className="categories-list__category"><Link className="categories-list__link" to="/">{category}</Link></li>
+                            })
+                        }
                     </ul>
                 </article>
                 <article className="cart" style={{display: cartDisplay ? "block" : "none"}}>

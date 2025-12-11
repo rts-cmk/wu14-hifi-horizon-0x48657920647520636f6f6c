@@ -4,6 +4,11 @@ import Layout from "./Layout"
 function App() {
 const browserRouter = createBrowserRouter([{
     element: <Layout/>,
+    loader: async () => {
+      const categories = await fetch("/api/categories").then(response => response.json())
+
+      return {categories}
+    },
     children: [
       {
         path: "/",
