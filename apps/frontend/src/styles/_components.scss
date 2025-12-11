@@ -146,6 +146,20 @@
                     margin: 12px 0;
                     padding: 3px 10px 0 10px;
                 }
+
+                &--color-true{
+                    color: var.$font-color-highlight;
+                    @include mix.screenMd(){
+                        color: var.$font-color-dark;
+                    }
+                }
+                
+                &--color-false{
+                    color: var.$font-color-light;
+                    @include mix.screenMd(){
+                        color: var.$font-color-dark;
+                    }
+                }
             }
         }
 
@@ -165,9 +179,18 @@
             border: none;
             padding: 0;
             font-size: 1.5rem;
+
             @include mix.screenMd(){
                 margin-right: 35px;
                 font-size: 1.7rem;
+            }
+
+            &--color-true{
+                color: var.$font-color-highlight;
+            }
+            
+            &--color-false{
+                color: var.$font-color-light;
             }
         }
 
@@ -260,8 +283,29 @@
             bottom: 100%;
             left: 0;
             background-color: var.$bg-color-lightest;
-            padding-top: 7vw;
+            padding-top: 5vw;
             align-items: center;
+            @include mix.screenMd(){
+                width: 340px;
+                top: 10%;
+                left: auto;
+                right: 10px;
+                bottom: auto;
+                padding-top: 7px;
+                border-radius: 3px;
+            }
+
+            &__arrow{
+                display: none;
+                @include mix.screenMd(){
+                    display: block;
+                    font-size: 1.3rem;
+                    position: absolute;
+                    right: 26px;
+                    bottom: 232px;
+                    color: var.$font-color-light;
+                }
+            }
 
             &__title{
                 padding: 0 6vw;
@@ -269,6 +313,10 @@
                 font-size: 1.5rem;
                 font-weight: 600;
                 margin: 0 0 10px 0;
+                @include mix.screenMd(){
+                    padding: 0 13px;
+                    font-size: 1.6rem;
+                }
 
                 &-amount{
                     font-size: 1rem;
@@ -280,6 +328,9 @@
             .cart-list{
                 list-style: none;
                 padding: 0 6vw;
+                @include mix.screenMd(){
+                    padding: 0 10px;
+                }
 
                 &__item{
                     margin-bottom: 15px;
@@ -290,6 +341,9 @@
                 display: flex;
                 justify-content: space-between;
                 padding: 0 6vw;
+                @include mix.screenMd(){
+                    padding: 0 10px;
+                }
 
                 &__text{
                     font-size: 1rem;
@@ -302,18 +356,27 @@
             }
 
             .cart-action{
-                margin-bottom: 10vw;
+                margin-bottom: 6vw;
                 display: flex;
                 justify-content: space-between;
                 padding: 0 6vw;
+                @include mix.screenMd(){
+                    padding: 0 10px;
+                    margin-bottom: 10px;
+                }
 
                 &__btn{
                     background-color: var.$action-btn-color;
                     color: var.$font-color-light;
                     border: none;
-                    border-radius: 5px;
-                    padding: 10px 20px;
+                    border-radius: 3px;
+                    padding: 10px 25px;
                     box-shadow: 2px 2px 7px 0 var.$bg-color-light-gray;
+                    @include mix.screenMd(){
+                        padding: 10px 30px;
+                        font-size: 1rem;
+                        font-weight: 200;
+                    }
                 }
             }
         }

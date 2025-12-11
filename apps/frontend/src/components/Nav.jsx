@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router";
-import { IoAdd, IoCart, IoClose, IoMenu, IoPerson, IoRemove, IoSearch } from "react-icons/io5";
+import { IoAdd, IoCaretUpSharp, IoCart, IoClose, IoMenu, IoPerson, IoRemove, IoSearch } from "react-icons/io5";
 import { useState } from "react";
 
 export default function Nav(){
@@ -21,14 +21,27 @@ export default function Nav(){
         }
     }
 
-    const handleSearchbarClick = () => {
-        if(searchbarDisplay === false){
-            setSearchbarDisplay(true) 
-            setHeaderDisplay(false)
-            setCategoriesDisplay(false)
+    const handleCategoriesClick = () => {
+        if(categoriesDisplay === false){
+            setCategoriesDisplay(true)
+            setHeaderDisplay(true)
+            setSearchbarDisplay(false)
             setCartDisplay(false)
         }else{
-            setSearchbarDisplay(false)
+            setCategoriesDisplay(false)
+        }
+    }
+
+    const handleSearchbarClick = () => {
+        if(window.screen.width < 768){
+            if(searchbarDisplay === false){
+                setSearchbarDisplay(true) 
+                setHeaderDisplay(false)
+                setCategoriesDisplay(false)
+                setCartDisplay(false)
+            }else{
+                setSearchbarDisplay(false)
+            }
         }
     }
 
@@ -60,6 +73,7 @@ export default function Nav(){
                     </ul>
                 </article>
                 <article className="cart" style={{display: cartDisplay ? "block" : "none"}}>
+                    <IoCaretUpSharp className="cart__arrow"/>
                     <h2 className="cart__title">Cart <span className="cart__title-amount">(1 item)</span></h2>
                     <ul className="cart-list">
                         <li className="cart-list__item">Placeholder</li>
@@ -78,16 +92,16 @@ export default function Nav(){
             <section className="navigation-section">
                 <header className={`header header--display-${headerDisplay}`}>
                     <Link className="header__link" to="/"><img className="header__logo" src="hifi_logo.png" alt="HiFi logo" /></Link>
-                    <button onClick={() => setCategoriesDisplay(categoriesDisplay ? false : true)} className="header__shop">SHOP</button>
+                    <button onClick={() => handleCategoriesClick()} className="header__shop">SHOP</button>
                     <Link className="header__link" to="/about">ABOUT US</Link>
                     <Link className="header__link" to="/contact">CONTACT US</Link>
                 </header>
                 <search className="searchbar">
                     <input id="search" className={`searchbar__input searchbar__input--display-${searchbarDisplay}`} type="text" placeholder="Search Product..."/>
-                    <button onClick={() => handleSearchbarClick()} className="searchbar__btn" type="submit"><IoSearch style={{color: searchbarDisplay && window.screen.width <= 768 ? "#FF6900" : "#FFFFFF"}}/></button>
+                    <button onClick={() => handleSearchbarClick()} className="searchbar__btn" type="submit"><IoSearch className={`searchbar__btn--color-${searchbarDisplay}`}/></button>
                 </search>
                 <Link className="navigation-section__profile" to="/profile"><IoPerson /></Link>
-                <button onClick={() => handleCartClick()} className="navigation-section__cart-btn"><IoCart style={{color: cartDisplay ? "#FF6900" : "#FFFFFF"}}/></button>
+                <button onClick={() => handleCartClick()} className="navigation-section__cart-btn"><IoCart className={`navigation-section__cart-btn--color-${cartDisplay}`}/></button>
                 <button onClick={() => handleHeaderClick()} className="navigation-section__header-btn"><IoMenu display={headerDisplay ? "none" : "block"}/><IoClose style={{color: "#FF6900"}} display={headerDisplay ? "block" : "none"}/></button>
             </section>
         </nav>
