@@ -7,7 +7,11 @@ import { eq } from "drizzle-orm";
 const router = express.Router();
 
 router.get("/", async (_req, res) => {
-  const items = await db.select().from(productTable);
+  const items = await db.query.productTable.findMany({
+    with: {
+      category: true
+    }
+  })
 
   return res.json(items)
 })
