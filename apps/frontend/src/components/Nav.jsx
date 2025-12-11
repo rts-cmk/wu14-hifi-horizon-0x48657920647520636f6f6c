@@ -4,59 +4,49 @@ import { useState } from "react";
 
 export default function Nav(){
 
-    const [headerDisplay, setHeaderDisplay] = useState("none")
-    const [searchbarDisplay, setSearchbarDisplay] = useState("none")
-    const [categoriesDisplay, setCategoriesDisplay] = useState("none")
-    const [cartDisplay, setCartDisplay] = useState("none")
-    const [headerBtnChange, setHeaderBtnChange] = useState(true)
-
+    const [headerDisplay, setHeaderDisplay] = useState(false)
+    const [searchbarDisplay, setSearchbarDisplay] = useState(false)
+    const [categoriesDisplay, setCategoriesDisplay] = useState(false)
+    const [cartDisplay, setCartDisplay] = useState(false)
     const navigate = useNavigate()
 
-    const handleHeaderClick = (e) => {
-        if(headerDisplay === "none"){
-            setHeaderDisplay("flex")
-            setSearchbarDisplay("none")
-            setCartDisplay("none")
-            setHeaderBtnChange(false)
-            e.target.style.color = "#FF6900"
+    const handleHeaderClick = () => {
+        if(headerDisplay === false){
+            setHeaderDisplay(true)
+            setSearchbarDisplay(false)
+            setCartDisplay(false)
         }else{
-            setHeaderDisplay("none")
-            setCategoriesDisplay("none")
-            setHeaderBtnChange(true)
-            e.target.style.color = "#FFFFFF"
+            setHeaderDisplay(false)
+            setCategoriesDisplay(false)
         }
     }
 
-    const handleSearchbarClick = (e) => {
-        if(searchbarDisplay === "none"){
-            setSearchbarDisplay("block") 
-            setHeaderDisplay("none")
-            setCategoriesDisplay("none")
-            setCartDisplay("none")
-            e.target.style.color = "#FF6900"
+    const handleSearchbarClick = () => {
+        if(searchbarDisplay === false){
+            setSearchbarDisplay(true) 
+            setHeaderDisplay(false)
+            setCategoriesDisplay(false)
+            setCartDisplay(false)
         }else{
-            setSearchbarDisplay("none")
-            e.target.style.color = "#FFFFFF"
+            setSearchbarDisplay(false)
         }
     }
 
-    const handleCartClick = (e) => {
-        if(cartDisplay === "none"){
-            setCartDisplay("block") 
-            setHeaderDisplay("none")
-            setCategoriesDisplay("none")
-            setSearchbarDisplay("none")
-            e.target.style.color = "#FF6900"
+    const handleCartClick = () => {
+        if(cartDisplay === false){
+            setCartDisplay(true) 
+            setHeaderDisplay(false)
+            setCategoriesDisplay(false)
+            setSearchbarDisplay(false)
         }else{
-            setSearchbarDisplay("none")
-            e.target.style.color = "#FFFFFF"
+            setCartDisplay(false)
         }
     }
 
     return(
         <nav className="nav">
             <section className="cards-section">
-                <article className="categories" style={{display: categoriesDisplay}}>
+                <article className="categories" style={{display: categoriesDisplay ? "block" : "none"}}>
                     <h2 className="categories__title">Browse Categories</h2>
                     <ul className="categories-list">
                         <li className="categories-list__category"><Link className="categories-list__link" to="/">Placeholder</Link></li>
@@ -69,7 +59,7 @@ export default function Nav(){
                         <li className="categories-list__category"><Link className="categories-list__link" to="/">Placeholder</Link></li>
                     </ul>
                 </article>
-                <article className="cart" style={{display: cartDisplay}}>
+                <article className="cart" style={{display: cartDisplay ? "block" : "none"}}>
                     <h2 className="cart__title">Cart <span className="cart__title-amount">(1 item)</span></h2>
                     <ul className="cart-list">
                         <li className="cart-list__item">Placeholder</li>
@@ -86,19 +76,19 @@ export default function Nav(){
                 </article>
             </section>
             <section className="navigation-section">
-                <header className="header" style={{display: headerDisplay}}>
+                <header className="header" style={{display: headerDisplay ? "flex" : "none"}}>
                     <Link className="header__link" to="/"><img className="header__logo" src="hifi_logo.png" alt="HiFi logo" /></Link>
-                    <button onClick={() => setCategoriesDisplay(categoriesDisplay === "none" ? "block" : "none")} className="header__shop">SHOP</button>
+                    <button onClick={() => setCategoriesDisplay(categoriesDisplay ? false : true)} className="header__shop">SHOP</button>
                     <Link className="header__link" to="/about">ABOUT US</Link>
                     <Link className="header__link" to="/contact">CONTACT US</Link>
                 </header>
                 <search className="searchbar">
-                    <input style={{display: searchbarDisplay}} id="search" className="searchbar__input" type="text" placeholder="Search Product..."/>
-                    <button onClick={(e) => handleSearchbarClick(e)} className="searchbar__btn" type="submit"><IoSearch /></button>
+                    <input style={{display: searchbarDisplay ? "block" : "none"}} id="search" className="searchbar__input" type="text" placeholder="Search Product..."/>
+                    <button onClick={() => handleSearchbarClick()} className="searchbar__btn" type="submit"><IoSearch style={{color: searchbarDisplay ? "#FF6900" : "#FFFFFF"}}/></button>
                 </search>
                 <Link className="navigation-section__profile" to="/profile"><IoPerson /></Link>
-                <button onClick={(e) => handleCartClick(e)} className="navigation-section__cart-btn"><IoCart /></button>
-                <button onClick={(e) => handleHeaderClick(e)} className="navigation-section__header-btn"><IoMenu display={headerBtnChange ? "block" : "none"}/><IoClose display={headerBtnChange ? "none" : "block"}/></button>
+                <button onClick={() => handleCartClick()} className="navigation-section__cart-btn"><IoCart style={{color: cartDisplay ? "#FF6900" : "#FFFFFF"}}/></button>
+                <button onClick={() => handleHeaderClick()} className="navigation-section__header-btn"><IoMenu display={headerDisplay ? "none" : "block"}/><IoClose style={{color: "#FF6900"}} display={headerDisplay ? "block" : "none"}/></button>
             </section>
         </nav>
     )
