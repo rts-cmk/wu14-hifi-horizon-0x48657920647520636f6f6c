@@ -2,7 +2,7 @@ import express, { json, urlencoded } from "express"
 import cors from "cors"
 import authRouter from "./routes/auth.js"
 import productRouter from "./routes/product.js"
-
+import categoryRouter from "./routes/categories.js"
 import session from "express-session"
 import passport from "passport"
 import morgan from "morgan"
@@ -35,14 +35,14 @@ app.use(passport.session())
 // Register routers
 app.use("/auth", authRouter)
 app.use("/products", productRouter)
-
+app.use("/categories", categoryRouter)
 
 app.get("/", (_req, res) => {
   res.status(200)
-  res.send(JSON.stringify({
+  res.json({
     status: 200,
     message: "OK"
-  }));
+  });
 })
 
 
