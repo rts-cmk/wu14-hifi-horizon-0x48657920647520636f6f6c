@@ -6,8 +6,11 @@
     bottom: 0;
     width: 100%;
     background-color: var.$bg-color-darkest;
-    @include mix.screenSm(){
+    @include mix.screenMd(){
         position: static;
+        padding: 20px 0 18px 0;
+        display: flex;
+        flex-direction: column;
     }
 
     .navigation-section{
@@ -16,6 +19,11 @@
         margin: 20px 0;
         z-index: 2;
         font-weight: 100;
+        @include mix.screenMd(){
+            justify-content: space-between;
+            margin: 0;
+            order: 1;
+        }
         
         .header{
             width: 50%;
@@ -26,15 +34,41 @@
             align-items: center;
             padding-top: 13vw;
             background-color: black;
+            @include mix.screenMd(){
+                position: static;
+                flex-direction: row;
+                padding-top: 0;
+                margin-left: 30px;
+            }
+
+            &--display-false{
+                display: none;
+                @include mix.screenMd(){
+                    display: flex;
+                }
+            }
+            &--display-true{
+                display: flex;
+            }
 
             &__link{
                 color: var.$font-color-light;
                 text-decoration: none;
                 font-size: .875rem;
                 margin-bottom: 50px;
+                
+                @include mix.screenMd(){
+                    margin-bottom: 0;
+                    margin-right: 30px;
+                }
 
                 &:last-child{
                     margin-bottom: 20vw;
+
+                    @include mix.screenMd(){
+                        margin-bottom: 0;
+                        margin-right: 0;
+                    }
                 }
             }
 
@@ -46,10 +80,22 @@
                 font-size: .875rem;
                 margin-bottom: 50px;
                 font-weight: 100;
+                @include mix.screenMd(){
+                    margin-bottom: 0;
+                    margin-right: 30px;
+                }
             }
         }
 
         .searchbar{
+            @include mix.screenMd(){
+                display: flex;
+            }
+
+            @include mix.screenLg(){
+                margin-left: 7vw;
+            }
+            
             &__input{
                 width: 100%;
                 position: absolute;
@@ -60,6 +106,13 @@
                 padding: 12px 0 12px 17px;
                 font-size: 1rem;
                 box-sizing: border-box;
+                @include mix.screenMd(){
+                    position: static;
+                    padding: 0 0 0 10px;
+                    font-size: .875rem;
+                    margin: 12px 0;
+                    border-radius: 2px 0 0 2px;
+                }
 
                 &::placeholder{
                     color: var.$font-color-dark;
@@ -69,6 +122,17 @@
                     outline: none;
                 }
 
+                &--display-false{
+                    display: none;
+                    @include mix.screenMd(){
+                        display: block;
+                    }
+                }
+
+                &--display-true{
+                    display: block;
+                }
+
             }
 
             &__btn{
@@ -76,6 +140,12 @@
                 border: none;
                 padding: 0;
                 font-size: 1.5rem;
+                @include mix.screenMd(){
+                    background-color: var.$bg-color-lighter-gray;
+                    border-radius: 0 2px 2px 0;
+                    margin: 12px 0;
+                    padding: 3px 10px 0 10px;
+                }
             }
         }
 
@@ -84,6 +154,10 @@
             border: none;
             color: var.$font-color-light;
             font-size: 1.5rem;
+            margin: auto 0;
+            @include mix.screenMd(){
+                font-size: 1.6rem;
+            }
         }
 
         &__cart-btn{
@@ -91,6 +165,10 @@
             border: none;
             padding: 0;
             font-size: 1.5rem;
+            @include mix.screenMd(){
+                margin-right: 35px;
+                font-size: 1.7rem;
+            }
         }
 
         &__header-btn{
@@ -98,12 +176,18 @@
             border: none;
             color: var.$font-color-light;
             padding: 0;
-            font-size: 1.5rem;
+            font-size: 1.7rem;
+            @include mix.screenMd(){
+                display: none;
+            }
         }
         
     }
 
     .cards-section{
+        @include mix.screenMd(){
+            order: 2;
+        }
 
         .categories{
             width: 50%;
@@ -111,18 +195,30 @@
             bottom: 100%;
             left: 0;
             background-color: var.$bg-color-lightest;
-            padding-top: 7.2vw;
+            padding-top: 6.1vw;
             align-items: center;
-
-            @include mix.mediaScreen(439px, 639px){
-                padding-top: (calc(7.2vw + 16px));
+            @include mix.mediaScreen(494px, 767px){
+                padding-top: (calc(6.1vw + 18px));
+            }
+            @include mix.screenMd(){
+                width: 360px;
+                top: 11.7%;
+                left: 115px;
+                bottom: auto;
+                padding-top: 30px;
             }
 
             &__title{
                 margin: 0 0 17px 0;
                 padding: 0 7vw;
-                font-size: 1.1rem;
-                font-weight: 600;
+                font-size: 1.2rem;
+                font-weight: 700;
+                @include mix.screenMd(){
+                    padding: 0 30px;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    margin: 0 0 20px 0;
+                }
             }
 
             .categories-list{
@@ -131,12 +227,22 @@
                 list-style: none;
                 font-size: 1.1rem;
                 padding: 0 7vw;
+                @include mix.screenMd(){
+                    padding: 0 30px;
+                    font-size: 1.4rem;
+                }
 
                 &__category{
                     margin-bottom: 3.27vw;
+                    @include mix.screenMd(){
+                        margin-bottom: 20px;
+                    }
 
                     &:last-child{
                         margin-bottom: 6vw;
+                        @include mix.screenMd(){
+                            margin-bottom: 40px;
+                        }
                 }
                 }
 

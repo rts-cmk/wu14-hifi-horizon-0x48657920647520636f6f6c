@@ -76,15 +76,15 @@ export default function Nav(){
                 </article>
             </section>
             <section className="navigation-section">
-                <header className="header" style={{display: headerDisplay ? "flex" : "none"}}>
+                <header className={`header header--display-${headerDisplay}`}>
                     <Link className="header__link" to="/"><img className="header__logo" src="hifi_logo.png" alt="HiFi logo" /></Link>
                     <button onClick={() => setCategoriesDisplay(categoriesDisplay ? false : true)} className="header__shop">SHOP</button>
                     <Link className="header__link" to="/about">ABOUT US</Link>
                     <Link className="header__link" to="/contact">CONTACT US</Link>
                 </header>
                 <search className="searchbar">
-                    <input style={{display: searchbarDisplay ? "block" : "none"}} id="search" className="searchbar__input" type="text" placeholder="Search Product..."/>
-                    <button onClick={() => handleSearchbarClick()} className="searchbar__btn" type="submit"><IoSearch style={{color: searchbarDisplay ? "#FF6900" : "#FFFFFF"}}/></button>
+                    <input id="search" className={`searchbar__input searchbar__input--display-${searchbarDisplay}`} type="text" placeholder="Search Product..."/>
+                    <button onClick={() => handleSearchbarClick()} className="searchbar__btn" type="submit"><IoSearch style={{color: searchbarDisplay && window.screen.width <= 768 ? "#FF6900" : "#FFFFFF"}}/></button>
                 </search>
                 <Link className="navigation-section__profile" to="/profile"><IoPerson /></Link>
                 <button onClick={() => handleCartClick()} className="navigation-section__cart-btn"><IoCart style={{color: cartDisplay ? "#FF6900" : "#FFFFFF"}}/></button>
