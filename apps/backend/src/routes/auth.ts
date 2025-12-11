@@ -1,11 +1,12 @@
 import passport from "passport"
 import { Strategy as LocalStrategy } from "passport-local";
-import db from "../db/index.ts"
-import { userRegisterSchema, userTable } from "../db/schema.ts";
+import db from "../db/index.js"
+import { userRegisterSchema, userTable } from "../db/schema.js";
 import { eq } from "drizzle-orm";
 import argon2 from "argon2";
 import { Router } from "express"
 import z from "zod";
+import * as env from "../env.js"
 const router = Router();
 
 declare global {
@@ -17,8 +18,7 @@ declare global {
   }
 }
 
-const SECRET_KEY_BASE = process.env.SECRET_KEY_BASE;
-
+const SECRET_KEY_BASE = env.SECRET_KEY_BASE as string;
 if (!SECRET_KEY_BASE) {
   throw new Error("AUTH: Missing secret key base")
 }
@@ -131,8 +131,8 @@ router.post("/register", async (req, res, next) => {
         status: 201,
         message: "Registration successful",
         user: {
-          id: newUser[0].id,
-          username: newUser[0].username
+          id: newUser[0]!.id,
+          username: newUser[0]!.username
         }
       });
     })

@@ -1,7 +1,10 @@
-import db from "./db";
-import type { fullProduct } from "./db/schema";
-
-async function main() {}
+import db from "./db/index.js";
+import type { fullProduct, productInsert } from "./db/schema.js";
+import {
+  productCategoryTable,
+  productTable,
+  productVariantTable,
+} from "./db/schema.js";
 
 const items: fullProduct = [
   {
@@ -605,3 +608,42 @@ const files = [
   "jolida_JD302b.jpg",
   "jolida_JD502b.jpg",
 ];
+
+const categories = [
+  { id: 1, name: "CD Players" },
+  { id: 2, name: "Amplifiers" },
+  { id: 3, name: "Preamplifiers" },
+  { id: 4, name: "Speakers" },
+  { id: 5, name: "Turntables" },
+];
+
+const categoryMap = new Map<string, number>();
+
+async function main() {
+  const firstRandomItem = await db.query.productTable.findFirst();
+  if (firstRandomItem) {
+    console.log(
+      "[SEEDER] database already seeded, if needed drop the data and re-seed",
+    );
+    return;
+  }
+
+  // Seed categories first
+  for (const category of categories) {
+    await db.insert(productCategoryTable).values(category);
+  }
+
+  // Then seed products
+  for (const item of items) {
+    await db.insert(productTable).values(item);
+
+    // Insert variants for each product
+    for (const variant of item.variants) {
+      await db.insert(productVariantTable).values(variant);
+    }
+  }
+
+  console.log("[SEEDER] Database seeded successfully");
+}
+
+main();

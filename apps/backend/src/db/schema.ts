@@ -97,8 +97,7 @@ export const productVariantRelation = relations(
 
 export const userRegisterSchema = createInsertSchema(userTable);
 
-type variant = typeof productVariantTable.$inferInsert;
+export type variant = typeof productVariantTable.$inferInsert;
 
-type product = typeof productTable.$inferInsert;
-
-export type fullProduct = (product & { variants: variant[] })[];
+export type productInsert = typeof productTable.$inferInsert;
+export type fullProduct = (productInsert & { variants: variant[] })[];

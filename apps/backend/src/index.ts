@@ -1,19 +1,16 @@
 import express, { json, urlencoded } from "express"
 import cors from "cors"
-import authRouter from "./routes/auth.ts"
+import authRouter from "./routes/auth.js"
+import productRouter from "./routes/product.js"
+
 import session from "express-session"
 import passport from "passport"
 import morgan from "morgan"
-
+import * as env from "./env.js"
 const app = express();
 
 const PORT = process.env.LISTEN_PORT || 3000
-const SECRET_KEY_BASE = process.env.SECRET_KEY_BASE;
 const devMode = process.env.NODE_ENV != "production";
-
-if (!SECRET_KEY_BASE) {
-  throw new Error("AUTH: Missing secret key base")
-}
 
 app.use(json())
 app.use(urlencoded())
@@ -23,7 +20,7 @@ app.use(cors({
   credentials: true
 }))
 app.use(session({
-  secret: process.env.SECRET_KEY_BASE!,
+  secret: env.SECRET_KEY_BASE as string,
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -35,7 +32,10 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
+// Register routers
 app.use("/auth", authRouter)
+app.use("/products", productRouter)
+
 
 app.get("/", (_req, res) => {
   res.status(200)
