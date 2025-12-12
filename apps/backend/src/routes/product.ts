@@ -1,17 +1,19 @@
 import express from "express"
 import db from "../db/index.js";
-import { productTable } from "../db/schema.js";
+import { productCategoryTable, productTable } from "../db/schema.js";
 import { eq } from "drizzle-orm";
 
 
 const router = express.Router();
 
 router.get("/", async (_req, res) => {
-  const items = await db.query.productTable.findMany({
-    with: {
-      category: true
-    }
-  })
+  const items = await db.select({
+    name: productTable.name,
+    category: productCategoryTable.name,
+    price: productTable.price,
+    summery: productTable.summery,
+    description: productTable.description,
+  }).from(productTable).leftJoin(productCategoryTable, eq(productTable.categoryId, productCategoryTable.id))
 
   return res.json(items)
 })
@@ -28,11 +30,18 @@ router.get("/:id", async (req, res) => {
     })
   }
 
-  const item = await db.query.productTable.findFirst({
-    where: eq(productTable.id, parsedID)
+  const item = await db.select({
+    name: productTable.name,
+    category: productCategoryTable.name,
+    price: productTable.price,
+    summery: productTable.summery,
+    description: productTable.description,
   })
+    .from(productTable)
+    .where(eq(productTable.id, parsedID))
+    .leftJoin(productCategoryTable, eq(productTable.categoryId, productCategoryTable.id))
 
-  if (!item) {
+  if (!item || item[0] == undefined) {
     res.status(404)
     return res.json({
       status: 404,
@@ -40,7 +49,7 @@ router.get("/:id", async (req, res) => {
     })
   }
 
-  return res.json(item)
+  return res.json(item[0])
 })
 
 export default router;
