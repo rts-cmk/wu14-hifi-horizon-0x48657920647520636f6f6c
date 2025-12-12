@@ -521,10 +521,17 @@
         .extra-info{
             font-size: .6rem;
             margin-bottom: 15px;
+            @include mix.screenMd(){
+                display: flex;
+                justify-content: space-between;
+            }
 
             &__text{
                 margin-top: 0;
                 margin-bottom: 10px;
+                @include mix.screenMd(){
+                    margin-bottom: 0;
+                }
 
                 &:last-child{
                     margin-bottom: 0;
