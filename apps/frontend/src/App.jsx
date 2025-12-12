@@ -2,14 +2,15 @@ import { createBrowserRouter, RouterProvider } from "react-router"
 import Layout from "./Layout"
 import Faq from "./pages/Faq"
 import About from "./pages/About"
+import LoginPage from "./pages/Login"
 
 function App() {
-const browserRouter = createBrowserRouter([{
-    element: <Layout/>,
+  const browserRouter = createBrowserRouter([{
+    element: <Layout />,
     loader: async () => {
       const categories = await fetch("/api/categories").then(response => response.json())
 
-      return {categories}
+      return { categories }
     },
     children: [
       {
@@ -26,13 +27,17 @@ const browserRouter = createBrowserRouter([{
       },
       {
         path: "/faq",
-        element: <Faq/>
+        element: <Faq />
+      },
+      {
+        path: "/login",
+        element: <LoginPage />
       }
     ]
   }])
 
   return (
-    <RouterProvider router={browserRouter}/>
+    <RouterProvider router={browserRouter} />
   )
 }
 
