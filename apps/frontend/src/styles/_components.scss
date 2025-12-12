@@ -5,7 +5,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: var.$bg-color-darkest;
+    background-color: var.$bg-color-dark;
     @include mix.screenMd(){
         position: static;
         padding: 20px 0 18px 0;
@@ -219,7 +219,7 @@
             position: absolute;
             bottom: 100%;
             left: 0;
-            background-color: var.$bg-color-lightest;
+            background-color: var.$bg-color-light;
             padding-top: 11vw;
             align-items: center;
             @include mix.mediaScreen(468px, 767px){
@@ -284,7 +284,7 @@
             position: absolute;
             bottom: 100%;
             left: 0;
-            background-color: var.$bg-color-lightest;
+            background-color: var.$bg-color-light;
             padding-top: 5vw;
             align-items: center;
             @include mix.screenMd(){
@@ -388,7 +388,7 @@
 .footer{
     display: flex;
     flex-direction: column;
-    background-color: var.$bg-color-darkest;
+    background-color: var.$bg-color-dark;
     padding: 25px 2.5vw 0 2.5vw;
     color: var.$font-color-light;
     margin-bottom: 70px;
