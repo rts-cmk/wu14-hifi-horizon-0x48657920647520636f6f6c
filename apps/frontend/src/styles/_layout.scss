@@ -1,4 +1,49 @@
+@use "variables" as var;
+@use "mixins" as mix;
+
 .main{
     display: flex;
     flex-direction: column;
+
+    &__title{
+        margin: 20px 3vw 35px 3vw;
+        color: var.$font-color-page-title;
+    }
+}
+
+.faq{
+    padding: 10px 15px 0 15px;
+    margin: 0 3vw 10px 3vw;
+    background-color: var.$bg-color-light;
+    box-shadow: 0 5px 5px 1px var.$bg-color-lighter-gray;
+    @include mix.screenMd(){
+        padding: 25px 35px 0 35px;
+    }
+
+    .info-section{
+        text-wrap: balance;
+        &__begining-title{
+            margin: 0 0 25px 0;
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
+
+        &__title{
+            margin-bottom: 0;
+        }
+
+        &__text{
+            margin-top: 0;
+            font-size: .875rem;
+
+            &:last-child{
+                margin-bottom: 10px;
+
+                @include mix.screenMd(){
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+    }
 }
