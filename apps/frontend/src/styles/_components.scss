@@ -440,6 +440,11 @@
                     margin-bottom: 0;
                 }
             }
+
+            &__link{
+                color: var.$font-color-light;
+                text-decoration: none;
+            }
         }
 
         .contact{
