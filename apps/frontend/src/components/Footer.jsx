@@ -11,8 +11,8 @@ export default function Footer(){
                     <li className="navigation__item"><Link className="navigation__link" to="/about">About Us</Link></li>
                 </ul>
                 <ul className="info">
-                    <li className="info__item"><Link className="info__link" to="/faq">Returns & Refunds</Link></li>
-                    <li className="info__item"><Link className="info__link" to="/faq">Delivery</Link></li>
+                    <li className="info__item"><Link className="info__link" to="/faq#refund">Returns & Refunds</Link></li>
+                    <li className="info__item"><Link className="info__link" to="/faq#delivery">Delivery</Link></li>
                     <li className="info__item">Privacy Policy</li>
                     <li className="info__item">Terms & Conditions</li>
                 </ul>

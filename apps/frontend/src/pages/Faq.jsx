@@ -1,4 +1,19 @@
+import { useEffect } from "react"
+
 export default function Faq(){
+
+    useEffect(() =>{
+        if(location.hash){
+            setTimeout(() => {
+                const element = document.getElementById(location.hash.substring(1))
+
+                if(element){
+                    element.scrollIntoView({ behavior: "instant" })
+                }
+            }, 0)
+        }
+    },[])
+
     return(
         <>
             <h1 className="main__title">FAQ</h1>
@@ -17,7 +32,7 @@ export default function Faq(){
                     </p>
                 </article>
                 <article className="info-section">
-                    <h2 className="info-section__title">REFUNDS</h2>
+                    <h2 className="info-section__title" id="refund">REFUNDS</h2>
                     <p className="info-section__text">
                         Once your returned item is received and inspected, we will send you an email or phone call to notify you that we have received your returned item.We will also notify you of the approval or rejection of your refund.
                     </p>
@@ -42,7 +57,7 @@ export default function Faq(){
                     </p>
                 </article>
                 <article className="info-section">
-                    <h2 className="info-section__title">DELIVERY</h2>
+                    <h2 className="info-section__title" id="delivery">DELIVERY</h2>
                     <p className="info-section__text">
                         Please check the condition of all products delivered as soon as they are received. This does not affect your statutory rights. If there is a problem we would like to deal with this as soon as possible to alleviate any inconvenience to yourself.
                         <br />
