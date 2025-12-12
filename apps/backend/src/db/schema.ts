@@ -51,6 +51,7 @@ export const productTable = sqliteTable(
     summery: text(),
     description: text(),
     price: int().notNull(),
+    specs: text({ mode: "json" }).default({}),
     categoryId: int()
       .notNull()
       .references(() => productCategoryTable.id),
