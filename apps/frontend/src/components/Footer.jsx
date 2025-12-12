@@ -6,15 +6,15 @@ export default function Footer(){
         <footer className="footer">
             <section className="upperhalf">
                 <ul className="navigation">
-                    <li className="navigation__items"><Link className="navigation__link" to="/">Home</Link></li>
-                    <li className="navigation__items"><Link className="navigation__link" to="/shop">Shop</Link></li>
-                    <li className="navigation__items"><Link className="navigation__link" to="/about">About Us</Link></li>
+                    <li className="navigation__item"><Link className="navigation__link" to="/">Home</Link></li>
+                    <li className="navigation__item"><Link className="navigation__link" to="/shop">Shop</Link></li>
+                    <li className="navigation__item"><Link className="navigation__link" to="/about">About Us</Link></li>
                 </ul>
                 <ul className="info">
-                    <li className="info__items">Returns & Refunds</li>
-                    <li className="info__items">Delivery</li>
-                    <li className="info__items">Privacy Policy</li>
-                    <li className="info__items">Terms & Conditions</li>
+                    <li className="info__item">Returns & Refunds</li>
+                    <li className="info__item">Delivery</li>
+                    <li className="info__item">Privacy Policy</li>
+                    <li className="info__item">Terms & Conditions</li>
                 </ul>
                 <article className="contact">
                     <h4 className="contact__title">Contact</h4>
@@ -23,10 +23,10 @@ export default function Footer(){
                     <p className="contact__location">44 Cow Wynd, Falkirk, Central Region, FK1 1PU</p>
                     <p className="contact__number"><FaPhoneAlt className="contact__phone"/> 01324 629 011</p>
                     <ul className="socials">
-                        <li className="socials__items"><a className="socials__link" href="*"><FaFacebookSquare /></a></li>
-                        <li className="socials__items"><a className="socials__link" href="*"><FaTwitterSquare /></a></li>
-                        <li className="socials__items"><a className="socials__link" href="*"><FaInstagramSquare /></a></li>
-                        <li className="socials__items"><a className="socials__link" href="*"><FaYoutubeSquare /></a></li>
+                        <li className="socials__item"><a className="socials__link" href="/"><FaFacebookSquare /></a></li>
+                        <li className="socials__item"><a className="socials__link" href="/"><FaTwitterSquare /></a></li>
+                        <li className="socials__item"><a className="socials__link" href="/"><FaInstagramSquare /></a></li>
+                        <li className="socials__item"><a className="socials__link" href="/"><FaYoutubeSquare /></a></li>
                     </ul>
                 </article>
             </section>
