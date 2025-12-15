@@ -1,38 +1,43 @@
+import { useNavigate } from "react-router"
+
 export default function Home(){
+
+    const navigate = useNavigate()
+
     return(
         <>
             <img className="main__banner" src="banner.png" alt="HiFi banner" />
             <section className="popular">
                 <h1 className="popular__title">POPULAR PRODUCTS</h1>
-                <button className="popular__see-more">See all products</button>
+                <button onClick={() => navigate("/shop")} className="popular__see-more">See all products</button>
                 <ul className="popular-products">
                     <li className="product">
                         <img className="product__image" src="https://placehold.co/200x100" alt="" />
                         <h3 className="product__name">Auralic Aries G2.1 Streamer</h3>
                         <p className="product__type">(Digital Output)</p>
                         <p className="product__price">£ 4,799.00</p>
-                        <button className="product__read-more">Read more</button>
+                        <button onClick={() => navigate("/shop")} className="product__read-more">Read more</button>
                     </li>
                     <li className="product">
                         <img className="product__image" src="https://placehold.co/200x100" alt="" />
                         <h3 className="product__name">Auralic Aries G2.1 Streamer</h3>
                         <p className="product__type">(Digital Output)</p>
                         <p className="product__price">£ 4,799.00</p>
-                        <button className="product__read-more">Read more</button>
+                        <button onClick={() => navigate("/shop")} className="product__read-more">Read more</button>
                     </li>
                     <li className="product">
                         <img className="product__image" src="https://placehold.co/200x100" alt="" />
                         <h3 className="product__name">Auralic Aries G2.1 Streamer</h3>
                         <p className="product__type">(Digital Output)</p>
                         <p className="product__price">£ 4,799.00</p>
-                        <button className="product__read-more">Read more</button>
+                        <button onClick={() => navigate("/shop")} className="product__read-more">Read more</button>
                     </li>
                     <li className="product">
                         <img className="product__image" src="https://placehold.co/200x100" alt="" />
                         <h3 className="product__name">Auralic Aries G2.1 Streamer</h3>
                         <p className="product__type">(Digital Output)</p>
                         <p className="product__price">£ 4,799.00</p>
-                        <button className="product__read-more">Read more</button>
+                        <button onClick={() => navigate("/shop")} className="product__read-more">Read more</button>
                     </li>
                 </ul>
             </section>
