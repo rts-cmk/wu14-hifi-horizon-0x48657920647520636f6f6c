@@ -48,3 +48,112 @@
 
     }
 }
+
+.about{
+    padding: 10px 15px 0 15px;
+    margin: 0 3vw 10px 3vw;
+    background-color: var.$bg-color-light;
+    box-shadow: 0 5px 5px 1px var.$bg-color-lighter-gray;
+    display: grid;
+    grid-template-columns: auto;
+    text-align: center;
+    @include mix.screenLg(){
+        padding: 25px 35px 0 35px;
+        grid-template-columns: 48% 48%;
+        justify-content: space-between;
+    }
+
+    &__picture{
+        width: 100%;
+        margin-bottom: 15px;
+        @include mix.screenLg(){
+            align-self: center;
+        }
+
+        &--order1{
+            order: 1;
+        }
+
+        &--order3{
+            order: 3;
+            @include mix.screenLg(){
+                order: 4;
+            }
+        }
+
+        &--order5{
+            order: 5;
+        }
+
+        &--order7{
+            order: 7;
+            @include mix.screenLg(){
+                order: 8;
+            }
+        }
+    }
+
+    .info{
+        @include mix.screenLg(){
+            padding: 0 10px 30px 10px;
+        }
+
+        &--order2{
+            order: 2;
+        }
+
+        &--order4{
+            order: 4;
+            @include mix.screenLg(){
+                order: 3;
+            }
+        }
+
+        &--order6{
+            order: 6;
+        }
+
+        &--order8{
+            order: 8;
+            @include mix.screenLg(){
+                order: 7;
+            }
+        }
+
+        &__title{
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+            @include mix.screenLg(){
+                margin-top: 20px;
+            }
+        }
+
+        &__text{
+            font-size: .875rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-wrap: balance;
+            @include mix.screenLg(){
+                text-wrap: wrap;
+                font-size: .85rem;
+            }
+
+            &:last-child{
+                margin-bottom: 40px;
+                @include mix.screenLg(){
+                    margin-bottom: 15px;
+                }
+            }
+
+            &--highlight{
+                color: var.$font-color-highlight;
+                font-weight: 700;
+            }
+        }
+
+        &__bold-text{
+            font-weight: 700;
+        }
+    }
+}
