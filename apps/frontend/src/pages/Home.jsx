@@ -3,21 +3,40 @@ export default function Home(){
         <>
             <img className="main__banner" src="banner.png" alt="HiFi banner" />
             <section className="popular">
-                <div className="top-part">
-                    <h1 className="top-part__title">POPULAR PRODUCTS</h1>
-                    <button className="top-part__see-more">See all products</button>
-                </div>
-                <div className="bottom-part">
-                    <article className="popular-product">
-                        <img className="popular-product__image" src="https://placehold.co/100" alt="" />
-                        <h3 className="popular-product__name">Auralic Aries G2.1 Streamer</h3>
-                        <p className="popular-product__type">(Digital Output)</p>
-                        <p className="popular-product__price">£ 4,799.00</p>
-                        <button className="popular-product__read-more">Read more</button>
-                    </article>
-                </div>
+                <h1 className="popular__title">POPULAR PRODUCTS</h1>
+                <button className="popular__see-more">See all products</button>
+                <ul className="popular-products">
+                    <li className="product">
+                        <img className="product__image" src="https://placehold.co/200x100" alt="" />
+                        <h3 className="product__name">Auralic Aries G2.1 Streamer</h3>
+                        <p className="product__type">(Digital Output)</p>
+                        <p className="product__price">£ 4,799.00</p>
+                        <button className="product__read-more">Read more</button>
+                    </li>
+                    <li className="product">
+                        <img className="product__image" src="https://placehold.co/200x100" alt="" />
+                        <h3 className="product__name">Auralic Aries G2.1 Streamer</h3>
+                        <p className="product__type">(Digital Output)</p>
+                        <p className="product__price">£ 4,799.00</p>
+                        <button className="product__read-more">Read more</button>
+                    </li>
+                    <li className="product">
+                        <img className="product__image" src="https://placehold.co/200x100" alt="" />
+                        <h3 className="product__name">Auralic Aries G2.1 Streamer</h3>
+                        <p className="product__type">(Digital Output)</p>
+                        <p className="product__price">£ 4,799.00</p>
+                        <button className="product__read-more">Read more</button>
+                    </li>
+                    <li className="product">
+                        <img className="product__image" src="https://placehold.co/200x100" alt="" />
+                        <h3 className="product__name">Auralic Aries G2.1 Streamer</h3>
+                        <p className="product__type">(Digital Output)</p>
+                        <p className="product__price">£ 4,799.00</p>
+                        <button className="product__read-more">Read more</button>
+                    </li>
+                </ul>
             </section>
-            <section className="info">
+            <section className="home-info">
                 <article className="what-we-do">
                     <h2 className="what-we-do__title">What we do</h2>
                     <p className="what-we-do__text">
@@ -58,14 +77,14 @@ export default function Home(){
                 </article>
             </section>
             <section className="newsletter">
-                <article className="info">
-                    <h2 className="info__title">SIGN UP FOR OUR NEWSLETTER</h2>
-                    <p className="info__subtitle">
+                <article className="newsletter-info">
+                    <h2 className="newsletter-info__title">SIGN UP FOR OUR NEWSLETTER</h2>
+                    <p className="newsletter-info__subtitle">
                         Subscribing to our newsletter secures you up to date information about HiFi Horizons latest updates and offers.
                     </p>
-                    <form className="sign-up">
-                        <input id="newsletter-email" className="sign-up__input" type="email" />
-                        <button className="sign-up__submit" type="submit">Sign up</button>
+                    <form className="newsletter-sign-up">
+                        <input id="newsletter-email" className="newsletter-sign-up__input" type="email" />
+                        <button className="newsletter-sign-up__submit-btn" type="submit">Sign up</button>
                     </form>
                 </article>
             </section>
