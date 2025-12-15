@@ -10,18 +10,18 @@ export default function Footer(){
                     <li className="navigation__item"><Link className="navigation__link" to="/products">Shop</Link></li>
                     <li className="navigation__item"><Link className="navigation__link" to="/about">About Us</Link></li>
                 </ul>
-                <ul className="info">
-                    <li className="info__item"><Link className="info__link" to="/faq#refund">Returns & Refunds</Link></li>
-                    <li className="info__item"><Link className="info__link" to="/faq#delivery">Delivery</Link></li>
-                    <li className="info__item">Privacy Policy</li>
-                    <li className="info__item">Terms & Conditions</li>
+                <ul className="footer-info">
+                    <li className="footer-info__item"><Link className="footer-info__link" to="/faq#refund">Returns & Refunds</Link></li>
+                    <li className="footer-info__item"><Link className="footer-info__link" to="/faq#delivery">Delivery</Link></li>
+                    <li className="footer-info__item">Privacy Policy</li>
+                    <li className="footer-info__item">Terms & Conditions</li>
                 </ul>
-                <article className="contact">
-                    <h4 className="contact__title">Contact</h4>
-                    <p className="contact__location">2 Joppa Rd, Edinburgh, EH15 2EU</p>
-                    <p className="contact__number"><FaPhoneAlt className="contact__phone"/> 0131 556 7901</p>
-                    <p className="contact__location">44 Cow Wynd, Falkirk, Central Region, FK1 1PU</p>
-                    <p className="contact__number"><FaPhoneAlt className="contact__phone"/> 01324 629 011</p>
+                <article className="footer-contact">
+                    <h4 className="footer-contact__title">Contact</h4>
+                    <p className="footer-contact__location">2 Joppa Rd, Edinburgh, EH15 2EU</p>
+                    <p className="footer-contact__number"><FaPhoneAlt className="contact__phone"/> 0131 556 7901</p>
+                    <p className="footer-contact__location">44 Cow Wynd, Falkirk, Central Region, FK1 1PU</p>
+                    <p className="footer-contact__number"><FaPhoneAlt className="contact__phone"/> 01324 629 011</p>
                     <ul className="socials">
                         <li className="socials__item"><a className="socials__link" href="/"><FaFacebookSquare /></a></li>
                         <li className="socials__item"><a className="socials__link" href="/"><FaTwitterSquare /></a></li>
