@@ -8,6 +8,7 @@
     &__title{
         margin: 20px 3vw 35px 3vw;
         color: var.$font-color-page-title;
+        font-weight: 600;
     }
 
     &__banner{
@@ -381,3 +382,69 @@
     }
 }
 
+.contact{
+    padding: 0 3vw;
+    margin-bottom: 25px;
+
+    &-form{
+        background-color: var.$bg-color-light;
+        padding: 3vw;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 25px;
+        box-shadow: 2px 2px 5px 0 var.$bg-color-light-gray;
+
+        &__title{
+            font-weight: 600;
+            margin-bottom: 5px;
+
+            &--highlight{
+                color: var.$font-color-highlight;
+            }
+        }
+
+        &__input, &__textarea{
+                font-size: 1rem;
+                box-shadow: 2px 2px 5px 0 var.$bg-color-light-gray;
+                border: none;
+                border-radius: 3px;
+                background-color: var.$bg-color-lighter-gray;
+                box-sizing: border-box;
+                padding: 5px;
+                resize: none;
+        }
+
+        &__input{
+            margin-bottom: 10px;
+            @include mix.screenMd(){
+                width: 75%;
+            }
+        }
+
+        &__textarea{
+            height: 100px;
+            margin-bottom: 40px;
+        }
+
+        &__submit-btn{
+                background-color: var.$action-btn-color;
+                box-shadow: 2px 2px 7px 0 var.$bg-color-light-gray;
+                border: none;
+                color: var.$font-color-light;
+                border-radius: 3px;
+                padding: 10px 30px;
+                align-self: end;
+        }
+    }
+
+    &__extra-info{
+        font-weight: 600;
+        margin: 0 2vw;
+        text-align: center;
+        text-wrap: pretty;
+
+        &--highlight{
+            color: var.$font-color-highlight;
+        }
+    }
+}
