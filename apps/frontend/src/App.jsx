@@ -3,6 +3,7 @@ import Layout from "./Layout"
 import Faq from "./pages/Faq"
 import About from "./pages/About"
 import LoginPage from "./pages/Login"
+import Home from "./pages/Home"
 
 function App() {
   const browserRouter = createBrowserRouter([{
@@ -12,10 +13,11 @@ function App() {
 
       return { categories }
     },
+    hydrateFallbackElement: <p>loading...</p>,
     children: [
       {
         path: "/",
-        element: <p>Webpage</p>
+        element: <Home/>
       },
       {
         path: "/shop",
