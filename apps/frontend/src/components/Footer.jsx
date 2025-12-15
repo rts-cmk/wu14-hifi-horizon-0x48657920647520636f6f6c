@@ -19,9 +19,9 @@ export default function Footer(){
                 <article className="footer-contact">
                     <h4 className="footer-contact__title">Contact</h4>
                     <p className="footer-contact__location">2 Joppa Rd, Edinburgh, EH15 2EU</p>
-                    <p className="footer-contact__number"><FaPhoneAlt className="contact__phone"/> 0131 556 7901</p>
+                    <p className="footer-contact__number"><FaPhoneAlt className="footer-contact__phone"/> 0131 556 7901</p>
                     <p className="footer-contact__location">44 Cow Wynd, Falkirk, Central Region, FK1 1PU</p>
-                    <p className="footer-contact__number"><FaPhoneAlt className="contact__phone"/> 01324 629 011</p>
+                    <p className="footer-contact__number"><FaPhoneAlt className="footer-contact__phone"/> 01324 629 011</p>
                     <ul className="socials">
                         <li className="socials__item"><a className="socials__link" href="/"><FaFacebookSquare /></a></li>
                         <li className="socials__item"><a className="socials__link" href="/"><FaTwitterSquare /></a></li>

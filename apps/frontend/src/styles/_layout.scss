@@ -324,6 +324,7 @@
         background-color: var.$bg-color-light;
         text-align: center;
         padding: 20px;
+        box-shadow: 2px 2px 5px 0 var.$bg-color-light-gray;
 
         &__title{
             margin: 0;
