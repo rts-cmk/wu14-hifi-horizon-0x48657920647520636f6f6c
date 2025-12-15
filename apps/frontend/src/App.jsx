@@ -21,7 +21,7 @@ function App() {
         element: <Home/>
       },
       {
-        path: "/shop",
+        path: "/products",
         element: <p>Shop</p>
       },
       {

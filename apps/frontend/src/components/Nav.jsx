@@ -66,7 +66,7 @@ export default function Nav(){
                     <ul className="categories-list">
                         {
                             categoriesData.map((category) => {
-                                return <li key={category} className="categories-list__category"><Link className="categories-list__link" to="/">{category}</Link></li>
+                                return <li key={category} className="categories-list__category"><Link className="categories-list__link" to="/products">{category}</Link></li>
                             })
                         }
                     </ul>

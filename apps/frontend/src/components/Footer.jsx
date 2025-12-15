@@ -7,7 +7,7 @@ export default function Footer(){
             <section className="upperhalf">
                 <ul className="navigation">
                     <li className="navigation__item"><Link className="navigation__link" to="/">Home</Link></li>
-                    <li className="navigation__item"><Link className="navigation__link" to="/shop">Shop</Link></li>
+                    <li className="navigation__item"><Link className="navigation__link" to="/products">Shop</Link></li>
                     <li className="navigation__item"><Link className="navigation__link" to="/about">About Us</Link></li>
                 </ul>
                 <ul className="info">
