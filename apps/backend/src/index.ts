@@ -3,6 +3,7 @@ import cors from "cors"
 import authRouter from "./routes/auth.js"
 import productRouter from "./routes/product.js"
 import categoryRouter from "./routes/categories.js"
+import contactRouter from "./routes/contact.js"
 import session from "express-session"
 import passport from "passport"
 import morgan from "morgan"
@@ -36,6 +37,7 @@ app.use(passport.session())
 app.use("/auth", authRouter)
 app.use("/products", productRouter)
 app.use("/categories", categoryRouter)
+app.use("/contact", contactRouter)
 
 app.get("/", (_req, res) => {
   res.status(200)

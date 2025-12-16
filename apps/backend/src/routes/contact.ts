@@ -18,3 +18,5 @@ router.post("/", async(req, res) => {
     await db.insert(contactTable).values(data.data)
     return res.send()
 })
+
+export default router
