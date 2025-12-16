@@ -31,6 +31,7 @@ export default function Nav(){
             setCartDisplay(false)
         }else{
             setCategoriesDisplay(false)
+            navigate("/products")
         }
     }
 
