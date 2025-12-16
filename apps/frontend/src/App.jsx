@@ -20,7 +20,13 @@ function App() {
     children: [
       {
         path: "/",
-        element: <Home/>
+        element: <Home/>,
+        loader: async () => {
+          const products = await fetch("/api/categories/1").then(response => response.json())
+
+          return { products }
+        },
+        hydrateFallbackElement: <p>loading...</p>
       },
       {
         path: "/products",

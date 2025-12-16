@@ -1,5 +1,5 @@
 import db from "./db/index.js";
-import type { fullProduct, productInsert } from "./db/schema.js";
+import type { fullProduct, productInsert, variant } from "./db/schema.js";
 import {
   productCategoryTable,
   productTable,
@@ -634,7 +634,15 @@ async function main() {
   }
 
   // Then seed products
-  for (const item of items) {
+  for (var item of items) {
+    const updatedVariants: variant[] = []
+    item.variants.forEach(v => {
+      updatedVariants.push({
+        ...v,
+        imageURL: `https://storage.ulf.milasholsting.dk/hifi-horizon/${v.imageURL}`
+      })
+    })
+    item.variants = updatedVariants
     await db.insert(productTable).values(item);
 
     // Insert variants for each product

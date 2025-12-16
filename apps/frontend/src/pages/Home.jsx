@@ -1,8 +1,10 @@
-import { useNavigate } from "react-router"
+import { useLoaderData, useNavigate } from "react-router"
 
 export default function Home(){
 
     const navigate = useNavigate()
+    const {products: productsdata} = useLoaderData()
+    console.log(productsdata)
 
     return(
         <>
@@ -11,34 +13,19 @@ export default function Home(){
                 <h1 className="popular__title">POPULAR PRODUCTS</h1>
                 <button onClick={() => navigate("/products")} className="popular__see-more">See all products</button>
                 <ul className="popular-products">
-                    <li className="popular-product">
-                        <img className="popular-product__image" src="https://placehold.co/200x100" alt="" />
-                        <h3 className="popular-product__name">Auralic Aries G2.1 Streamer</h3>
-                        <p className="popular-product__type">(Digital Output)</p>
-                        <p className="popular-product__price">£ 4,799.00</p>
-                        <button onClick={() => navigate("/products")} className="popular-product__read-more">Read more</button>
-                    </li>
-                    <li className="popular-product">
-                        <img className="popular-product__image" src="https://placehold.co/200x100" alt="" />
-                        <h3 className="popular-product__name">Auralic Aries G2.1 Streamer</h3>
-                        <p className="popular-product__type">(Digital Output)</p>
-                        <p className="popular-product__price">£ 4,799.00</p>
-                        <button onClick={() => navigate("/products")} className="popular-product__read-more">Read more</button>
-                    </li>
-                    <li className="popular-product">
-                        <img className="popular-product__image" src="https://placehold.co/200x100" alt="" />
-                        <h3 className="popular-product__name">Auralic Aries G2.1 Streamer</h3>
-                        <p className="popular-product__type">(Digital Output)</p>
-                        <p className="popular-product__price">£ 4,799.00</p>
-                        <button onClick={() => navigate("/products")} className="popular-product__read-more">Read more</button>
-                    </li>
-                    <li className="popular-product">
-                        <img className="popular-product__image" src="https://placehold.co/200x100" alt="" />
-                        <h3 className="popular-product__name">Auralic Aries G2.1 Streamer</h3>
-                        <p className="popular-product__type">(Digital Output)</p>
-                        <p className="popular-product__price">£ 4,799.00</p>
-                        <button onClick={() => navigate("/products")} className="popular-product__read-more">Read more</button>
-                    </li>
+                    {
+                        productsdata.products.map((product) => {
+                            return(
+                                <li className="popular-product" key={product.name}>
+                                    <img className="popular-product__image" src={product.variants[0].imageURL} alt="" />
+                                    <h3 className="popular-product__name">{product.name}</h3>
+                                    <p className="popular-product__type">(Digital Output)</p>
+                                    <p className="popular-product__price">£ {product.price}</p>
+                                    <button onClick={() => navigate("/products")} className="popular-product__read-more">Read more</button>
+                                </li>
+                            )
+                        })
+                    }
                 </ul>
             </section>
             <section className="home-info">

@@ -1,13 +1,13 @@
 import { Router } from "express"
 import db from "../db/index.js"
 import { productCategoryTable, productTable } from "../db/schema.js"
-import { like } from "drizzle-orm"
+import { eq, like } from "drizzle-orm"
 
 const router = Router()
 
 router.get("/", async (_req, res) => {
   const categories = await db.select().from(productCategoryTable)
-  return res.json(categories.map((item) => item.name))
+  return res.json(categories)
 })
 
 router.get("/:category", async (req, res) => {
@@ -40,7 +40,40 @@ router.get("/:category", async (req, res) => {
       })
     }
 
-    res.json(cat)
+    return res.json(cat)
   }
+
+  const cat = await db.query.productCategoryTable.findFirst({
+    columns: {
+      id: false
+    },
+    where: eq(productCategoryTable.id, parsedID),
+    with: {
+      products: {
+        columns: {
+          categoryId: false
+        },
+        with: {
+          variants: {
+            columns: {
+              id: false,
+              productId: false
+            }
+          }
+        }
+      }
+    }
+  })
+
+  if (!cat) {
+    res.status(404)
+    return res.json({
+      status: 404,
+      message: "category not found"
+    })
+  }
+
+  return res.json(cat)
+
 })
 export default router

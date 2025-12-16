@@ -1,21 +1,36 @@
 import express from "express"
 import db from "../db/index.js";
-import { productCategoryTable, productTable } from "../db/schema.js";
+import { productCategoryTable, productTable, productVariantTable } from "../db/schema.js";
 import { eq } from "drizzle-orm";
 
 
 const router = express.Router();
 
 router.get("/", async (_req, res) => {
-  const items = await db.select({
-    name: productTable.name,
-    category: productCategoryTable.name,
-    price: productTable.price,
-    summery: productTable.summery,
-    description: productTable.description,
-  }).from(productTable).leftJoin(productCategoryTable, eq(productTable.categoryId, productCategoryTable.id))
-
-  return res.json(items)
+  const otherProducts = await db.query.productTable.findMany({
+    columns: {
+      description: true,
+      name: true,
+      price: true,
+      specs: true,
+      summery: true,
+    },
+    with: {
+      category: {
+        columns: {
+          name: true,
+        }
+      },
+      variants: {
+        columns:{
+          imageURL: true,
+          name: true,
+        }
+      }
+    }
+  })
+  console.log(otherProducts)
+  return res.json(otherProducts)
 })
 
 router.get("/:id", async (req, res) => {
