@@ -410,52 +410,65 @@ const items: fullProduct = [
   },
   {
     id: 26,
-    name: "project_debut_iii_blue",
-    summery: "project_debut_iii_blue",
+    name: "project_debut_iii",
+    summery: "project_debut_iii",
     description: "Entry-level turntable with blue finish",
     price: 399,
     categoryId: 5,
     variants: [
       {
         id: 26,
-        name: "project_debut_iii_blue",
+        name: "blue",
         imageURL: "Pro_ject_Debut_III_blue.jpg",
+        productId: 26,
+      },
+      {
+        id: 27,
+        name: "red",
+        imageURL: "Pro_ject_Debut_III_red.jpg",
+        productId: 26,
+      },
+      {
+        id: 28,
+        name: "yellow",
+        imageURL: "Pro_ject_Debut_III_yellow.jpg",
         productId: 26,
       },
     ],
   },
-  {
-    id: 27,
-    name: "project_debut_iii_red",
-    summery: "project_debut_iii_red",
-    description: "Entry-level turntable with red finish",
-    price: 399,
-    categoryId: 5,
-    variants: [
-      {
-        id: 27,
-        name: "project_debut_iii_red",
-        imageURL: "Pro_ject_Debut_III_red.jpg",
-        productId: 27,
-      },
-    ],
-  },
-  {
-    id: 28,
-    name: "project_debut_iii_yellow",
-    summery: "project_debut_iii_yellow",
-    description: "Entry-level turntable with yellow finish",
-    price: 399,
-    categoryId: 5,
-    variants: [
-      {
-        id: 28,
-        name: "project_debut_iii_yellow",
-        imageURL: "Pro_ject_Debut_III_yellow.jpg",
-        productId: 28,
-      },
-    ],
-  },
+  //},
+  //{
+  //  id: 27,
+  //  name: "project_debut_iii_red",
+  //  summery: "project_debut_iii_red",
+  //  description: "Entry-level turntable with red finish",
+  //  price: 399,
+  //  categoryId: 5,
+  //  variants: [
+  //    {
+  //      id: 27,
+  //      name: "project_debut_iii_red",
+  //      imageURL: "Pro_ject_Debut_III_red.jpg",
+  //      productId: 27,
+  //    },
+  //  ],
+  //},
+  //{
+  //  id: 28,
+  //  name: "project_debut_iii_yellow",
+  //  summery: "project_debut_iii_yellow",
+  //  description: "Entry-level turntable with yellow finish",
+  //  price: 399,
+  //  categoryId: 5,
+  //  variants: [
+  //    {
+  //      id: 28,
+  //      name: "project_debut_iii_yellow",
+  //      imageURL: "Pro_ject_Debut_III_yellow.jpg",
+  //      productId: 28,
+  //    },
+  //  ],
+  //},
   {
     id: 29,
     name: "project_rpm10",
@@ -465,7 +478,7 @@ const items: fullProduct = [
     categoryId: 5,
     variants: [
       {
-        id: 29,
+        id: 30,
         name: "project_rpm10",
         imageURL: "Pro_ject_rpm10.jpg",
         productId: 29,
@@ -481,7 +494,7 @@ const items: fullProduct = [
     categoryId: 5,
     variants: [
       {
-        id: 30,
+        id: 31,
         name: "project_rpm5",
         imageURL: "Pro_ject_rpm_5.jpg",
         productId: 30,
@@ -497,7 +510,7 @@ const items: fullProduct = [
     categoryId: 2,
     variants: [
       {
-        id: 31,
+        id: 32,
         name: "jolida_jd102b",
         imageURL: "jolida_JD102b.jpg",
         productId: 31,
@@ -513,7 +526,7 @@ const items: fullProduct = [
     categoryId: 2,
     variants: [
       {
-        id: 32,
+        id: 33,
         name: "jolida_jd202a",
         imageURL: "jolida_JD202a.jpg",
         productId: 32,
@@ -529,7 +542,7 @@ const items: fullProduct = [
     categoryId: 2,
     variants: [
       {
-        id: 33,
+        id: 34,
         name: "jolida_jd300b",
         imageURL: "jolida_JD300b.jpg",
         productId: 33,
@@ -545,7 +558,7 @@ const items: fullProduct = [
     categoryId: 2,
     variants: [
       {
-        id: 34,
+        id: 35,
         name: "jolida_jd302b",
         imageURL: "jolida_JD302b.jpg",
         productId: 34,
@@ -561,7 +574,7 @@ const items: fullProduct = [
     categoryId: 2,
     variants: [
       {
-        id: 35,
+        id: 36,
         name: "jolida_jd502b",
         imageURL: "jolida_JD502b.jpg",
         productId: 35,
