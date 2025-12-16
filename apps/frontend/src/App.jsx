@@ -5,7 +5,7 @@ import About from "./pages/About"
 import LoginPage from "./pages/Login"
 import Home from "./pages/Home"
 import Contact from "./pages/Contact"
-import Products from "./pages/products"
+import Products from "./pages/Products"
 
 function App() {
   const browserRouter = createBrowserRouter([{

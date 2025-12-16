@@ -11,33 +11,33 @@ export default function Home(){
                 <h1 className="popular__title">POPULAR PRODUCTS</h1>
                 <button onClick={() => navigate("/products")} className="popular__see-more">See all products</button>
                 <ul className="popular-products">
-                    <li className="product">
-                        <img className="product__image" src="https://placehold.co/200x100" alt="" />
-                        <h3 className="product__name">Auralic Aries G2.1 Streamer</h3>
-                        <p className="product__type">(Digital Output)</p>
-                        <p className="product__price">£ 4,799.00</p>
-                        <button onClick={() => navigate("/products")} className="product__read-more">Read more</button>
+                    <li className="popular-product">
+                        <img className="popular-product__image" src="https://placehold.co/200x100" alt="" />
+                        <h3 className="popular-product__name">Auralic Aries G2.1 Streamer</h3>
+                        <p className="popular-product__type">(Digital Output)</p>
+                        <p className="popular-product__price">£ 4,799.00</p>
+                        <button onClick={() => navigate("/products")} className="popular-product__read-more">Read more</button>
                     </li>
-                    <li className="product">
-                        <img className="product__image" src="https://placehold.co/200x100" alt="" />
-                        <h3 className="product__name">Auralic Aries G2.1 Streamer</h3>
-                        <p className="product__type">(Digital Output)</p>
-                        <p className="product__price">£ 4,799.00</p>
-                        <button onClick={() => navigate("/products")} className="product__read-more">Read more</button>
+                    <li className="popular-product">
+                        <img className="popular-product__image" src="https://placehold.co/200x100" alt="" />
+                        <h3 className="popular-product__name">Auralic Aries G2.1 Streamer</h3>
+                        <p className="popular-product__type">(Digital Output)</p>
+                        <p className="popular-product__price">£ 4,799.00</p>
+                        <button onClick={() => navigate("/products")} className="popular-product__read-more">Read more</button>
                     </li>
-                    <li className="product">
-                        <img className="product__image" src="https://placehold.co/200x100" alt="" />
-                        <h3 className="product__name">Auralic Aries G2.1 Streamer</h3>
-                        <p className="product__type">(Digital Output)</p>
-                        <p className="product__price">£ 4,799.00</p>
-                        <button onClick={() => navigate("/products")} className="product__read-more">Read more</button>
+                    <li className="popular-product">
+                        <img className="popular-product__image" src="https://placehold.co/200x100" alt="" />
+                        <h3 className="popular-product__name">Auralic Aries G2.1 Streamer</h3>
+                        <p className="popular-product__type">(Digital Output)</p>
+                        <p className="popular-product__price">£ 4,799.00</p>
+                        <button onClick={() => navigate("/products")} className="popular-product__read-more">Read more</button>
                     </li>
-                    <li className="product">
-                        <img className="product__image" src="https://placehold.co/200x100" alt="" />
-                        <h3 className="product__name">Auralic Aries G2.1 Streamer</h3>
-                        <p className="product__type">(Digital Output)</p>
-                        <p className="product__price">£ 4,799.00</p>
-                        <button onClick={() => navigate("/products")} className="product__read-more">Read more</button>
+                    <li className="popular-product">
+                        <img className="popular-product__image" src="https://placehold.co/200x100" alt="" />
+                        <h3 className="popular-product__name">Auralic Aries G2.1 Streamer</h3>
+                        <p className="popular-product__type">(Digital Output)</p>
+                        <p className="popular-product__price">£ 4,799.00</p>
+                        <button onClick={() => navigate("/products")} className="popular-product__read-more">Read more</button>
                     </li>
                 </ul>
             </section>
