@@ -35,6 +35,10 @@ export default function Nav(){
         }
     }
 
+    const closeCategoryClick = () => {
+        setCategoriesDisplay(false)
+    }
+
     const handleSearchbarClick = () => {
         if(window.screen.width < 768){
             if(searchbarDisplay === false){
@@ -67,7 +71,7 @@ export default function Nav(){
                     <ul className="categories-list">
                         {
                             categoriesData.map((category) => {
-                                return <li key={category.id} className="categories-list__category"><Link className="categories-list__link" to="/products">{category.name}</Link></li>
+                                return <li key={category.id} onClick={() => closeCategoryClick()} className="categories-list__category"><Link className="categories-list__link" to="/products">{category.name}</Link></li>
                             })
                         }
                     </ul>
