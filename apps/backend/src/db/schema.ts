@@ -1,6 +1,7 @@
 import { relations } from "drizzle-orm";
 import { index, int, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { createInsertSchema } from "drizzle-zod";
+import z from "zod";
 
 export const userTable = sqliteTable(
   "users",
@@ -96,7 +97,18 @@ export const productVariantRelation = relations(
   }),
 );
 
+export const contactTable = sqliteTable("contact", {
+  id: int().primaryKey({autoIncrement: true}),
+  name: text().notNull(),
+  email: text().notNull(),
+  subject: text().notNull(),
+  message: text().notNull()
+})
+
 export const userRegisterSchema = createInsertSchema(userTable);
+export const contactSchema = createInsertSchema(contactTable, {
+  email: z.email()
+})
 
 export type variant = typeof productVariantTable.$inferInsert;
 

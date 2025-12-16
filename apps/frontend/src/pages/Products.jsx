@@ -1,4 +1,4 @@
-import { FiChevronUp, FiSliders } from "react-icons/fi";
+import { FiCheck, FiChevronUp, FiSliders } from "react-icons/fi";
 import { Link } from "react-router";
 
 export default function Products(){
@@ -8,27 +8,39 @@ export default function Products(){
             <section className="products">
                 <div className="products-filter">
                     <h2 className="products-filter__title">Sort by</h2>
-                    <button className="products-filter__hide-btn">Brand <span><FiChevronUp /></span></button>
-                    <form className="filters">
-                        <label className="filters__label" htmlFor="placeholder1">placeholder1</label>
-                        <input className="filters__checkbox" type="checkbox" id="placeholder1" />
-                        <label className="filters__label" htmlFor="placeholder2">placeholder2</label>
-                        <input className="filters__checkbox" type="checkbox" id="placeholder2" />
-                        <label className="filters__label" htmlFor="placeholder3">placeholder3</label>
-                        <input className="filters__checkbox" type="checkbox" id="placeholder3" />
+                    <button className="products-filter__hide-btn">Brand <span className="products-filter__hide-btn--icon"><FiChevronUp /></span></button>
+                    <form className="filters" >
+                        <label className="filters__label" htmlFor="placeholder1">
+                            placeholder1
+                            <button className="filters__checkbox" id="placeholder1"><FiCheck /></button>
+                        </label>
+                        <label className="filters__label" htmlFor="placeholder2">
+                            placeholder2
+                            <button className="filters__checkbox" id="placeholder2"><FiCheck /></button>
+                        </label>
+                        <label className="filters__label" htmlFor="placeholder3">
+                            placeholder3
+                            <button className="filters__checkbox" id="placeholder3"><FiCheck /></button>
+                        </label>
                     </form>
-                    <button className="products-filter__hide-btn">Color <span><FiChevronUp /></span></button>
-                    <form className="filters">
-                        <label className="filters__label" htmlFor="placeholder1">placeholder1</label>
-                        <input className="filters__checkbox" type="checkbox" id="placeholder1" />
-                        <label className="filters__label" htmlFor="placeholder2">placeholder2</label>
-                        <input className="filters__checkbox" type="checkbox" id="placeholder2" />
-                        <label className="filters__label" htmlFor="placeholder3">placeholder3</label>
-                        <input className="filters__checkbox" type="checkbox" id="placeholder3" />
+                    <button className="products-filter__hide-btn">Color <span className="products-filter__hide-btn--icon"><FiChevronUp /></span></button>
+                    <form className="filters" >
+                        <label className="filters__label" htmlFor="placeholder1">
+                            placeholder1
+                            <button className="filters__checkbox" id="placeholder1"><FiCheck /></button>
+                        </label>
+                        <label className="filters__label" htmlFor="placeholder2">
+                            placeholder2
+                            <button className="filters__checkbox" id="placeholder2"><FiCheck /></button>
+                        </label>
+                        <label className="filters__label" htmlFor="placeholder3">
+                            placeholder3
+                            <button className="filters__checkbox" id="placeholder3"><FiCheck /></button>
+                        </label>
                     </form>
-                    <button className="products-filter__hide-btn">Price <span><FiChevronUp /></span></button>
-                    <form className="filters">
-                        <input className="filters__price-range" type="range" name="" id="" />
+                    <button className="products-filter__hide-btn">Price <span className="products-filter__hide-btn--icon"><FiChevronUp /></span></button>
+                    <form className="filters" >
+                        <input className="filters__price-range" type="range" id="price-range" />
                     </form>
                 </div>
                 <ul className="products-list">
