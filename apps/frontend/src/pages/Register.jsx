@@ -1,39 +1,37 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router";
 import { useAuth } from "../context/Auth";
-import { login as apiLogin } from "../services/api";
+import { register as apiRegister } from "../services/api";
 import "../styles/login.scss"
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { login, user } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     
     try {
-      const user = await apiLogin(username, password);
+      const user = await apiRegister(username, email, password);
       if (user) {
         login(user);
         navigate("/");
       } else {
-        setError("Login failed. Please check your credentials.");
+        setError("Registration failed. Please try again.");
       }
     } catch (err) {
-      setError(err.message || "An error occurred during login.");
+      setError(err.message || "An error occurred during registration.");
     }
-  }
-  if(user) {
-    console.log("user logged in, redirecting...", user);
-    navigate("/");
   }
 
   return (
     <div className="login-container">
-      <h1>Login</h1>
+      <h1>Register</h1>
       {error && <p className="error-message" style={{color: 'red'}}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -45,6 +43,18 @@ export default function LoginPage() {
             placeholder="Username" 
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input 
+            type="email" 
+            id="email"
+            name="email" 
+            placeholder="Email" 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -61,10 +71,10 @@ export default function LoginPage() {
           />
         </div>
 
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
       </form>
       <p style={{marginTop: '1rem', textAlign: 'center'}}>
-        Don't have an account? <Link to="/register">Register here</Link>
+        Already have an account? <Link to="/login">Login here</Link>
       </p>
     </div>
   )

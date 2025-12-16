@@ -6,6 +6,7 @@ import LoginPage from "./pages/Login"
 import Home from "./pages/Home"
 import Contact from "./pages/Contact"
 import Products from "./pages/Products"
+import RegisterPage from "./pages/Register"
 
 function App() {
   const browserRouter = createBrowserRouter([{
@@ -40,6 +41,10 @@ function App() {
       {
         path: "/contact",
         element: <Contact/>
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />
       }
     ]
   }])

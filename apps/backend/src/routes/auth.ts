@@ -1,7 +1,7 @@
 import passport from "passport"
 import { Strategy as LocalStrategy } from "passport-local";
 import db from "../db/index.js"
-import { userRegisterSchema, userTable } from "../db/schema.js";
+import { userRegisterSchema, userTable, type UserTable, shippingDetailsSchema } from "../db/schema.js";
 import { eq } from "drizzle-orm";
 import argon2 from "argon2";
 import { Router } from "express"
@@ -11,10 +11,7 @@ const router = Router();
 
 declare global {
   namespace Express {
-    interface User {
-      id: number;
-      username: string;
-    }
+    interface User extends UserTable {}
   }
 }
 
@@ -27,6 +24,9 @@ const argonOptions: argon2.Options = {
   secret: Buffer.from(SECRET_KEY_BASE),
 }
 
+const fullSchema = userRegisterSchema.extend({
+  shipping: shippingDetailsSchema
+})
 
 passport.use(new LocalStrategy(async (username, password, cb) => {
   const [user] = await db.select().from(userTable).where(eq(userTable.username, username as string)).limit(1);
@@ -46,8 +46,13 @@ passport.use(new LocalStrategy(async (username, password, cb) => {
 }));
 
 passport.serializeUser((user, cb) => {
+  console.log("serializing user:", user)
   process.nextTick(() => {
     return cb(null, {
+      data: {
+        hello: "world",
+        ...user
+      },
       id: user.id,
       username: user.username,
     })
@@ -55,6 +60,7 @@ passport.serializeUser((user, cb) => {
 })
 
 passport.deserializeUser((user, cb) => {
+  console.log("deserializing user:", user)
   process.nextTick(() => {
     if (!user) {
       return cb(new Error("User not found"))
@@ -83,6 +89,10 @@ router.post("/login", (req, res, next) => {
         status: 200,
         message: "Login successful",
         user: {
+          data: {
+            hello: "world",
+            ...user
+          },
           id: user.id,
           username: user.username
         }
@@ -92,7 +102,7 @@ router.post("/login", (req, res, next) => {
 });
 
 router.post("/register", async (req, res, next) => {
-  const data = userRegisterSchema.safeParse(req.body);
+  const data = fullSchema.safeParse(req.body);
 
   if (!data.success) {
     res.status(422);
@@ -141,16 +151,16 @@ router.post("/register", async (req, res, next) => {
   }
 })
 
-router.get("/me", (req, res) => {
+router.get("/me", async (req, res) => {
   if (!req.isAuthenticated()) {
     return res.status(401).json({ status: 401, message: "Unauthorized" });
   }
-
-  const user = req.user as Express.User;
-  return res.json({
-    id: user.id,
-    username: user.username
-  });
+  const dbUser = await db.select({
+    id: userTable.id,
+    username: userTable.username,
+    email: userTable.email,
+  }).from(userTable).where(eq(userTable.id, req.user!.id))
+  return res.json(dbUser);
 })
 
 export default router;

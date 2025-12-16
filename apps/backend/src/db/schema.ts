@@ -14,6 +14,21 @@ export const userTable = sqliteTable(
   (table) => [index("user_username_idx").on(table.username)],
 );
 
+export const shippingTable = sqliteTable("shippings", {
+  id: int().primaryKey({ autoIncrement: true }),
+  userId: int("user_id").references(() => userTable.id),
+  addressLine1: text().notNull(),
+  addressLine2: text(),
+  city: text().notNull(),
+  state: text().notNull(),
+  postalCode: text().notNull(),
+  country: text().notNull(),
+});
+
+export const userRelations = relations(userTable, ({ many }) => ({
+  shipping: many(shippingTable),
+}));
+
 export const cartTable = sqliteTable("carts", {
   id: int().primaryKey({ autoIncrement: true }),
   userId: int("user_id").references(() => userTable.id),
@@ -59,6 +74,7 @@ export const productTable = sqliteTable(
   },
   (table) => [index("product_name_idx").on(table.name)],
 );
+
 
 export const productCategoryTable = sqliteTable("product_categories", {
   id: int().primaryKey({ autoIncrement: true }),
@@ -109,8 +125,10 @@ export const userRegisterSchema = createInsertSchema(userTable);
 export const contactSchema = createInsertSchema(contactTable, {
   email: z.email()
 })
+export const shippingDetailsSchema = createInsertSchema(shippingTable);
 
 export type variant = typeof productVariantTable.$inferInsert;
 
 export type productInsert = typeof productTable.$inferInsert;
 export type fullProduct = (productInsert & { variants: variant[] })[];
+export type UserTable = typeof userTable.$inferSelect;
