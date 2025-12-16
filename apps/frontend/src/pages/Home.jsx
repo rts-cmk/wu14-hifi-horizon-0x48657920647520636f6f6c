@@ -4,7 +4,6 @@ export default function Home(){
 
     const navigate = useNavigate()
     const {products: productsdata} = useLoaderData()
-    console.log(productsdata)
 
     return(
         <>
@@ -17,7 +16,7 @@ export default function Home(){
                         productsdata.products.map((product) => {
                             return(
                                 <li className="popular-product" key={product.name}>
-                                    <img className="popular-product__image" src={product.variants[0].imageURL} alt="" />
+                                    <img className="popular-product__image" src={product.variants[0].imageURL || "https://placehold.co/200x100"} alt="" />
                                     <h3 className="popular-product__name">{product.name}</h3>
                                     <p className="popular-product__type">(Digital Output)</p>
                                     <p className="popular-product__price">£ {product.price}</p>

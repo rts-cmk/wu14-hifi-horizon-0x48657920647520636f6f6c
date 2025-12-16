@@ -99,7 +99,7 @@ const items: fullProduct = [
       {
         id: 6,
         name: "exposure_2010s_amp",
-        imageURL: "exposure_2010.jpg",
+        imageURL: "exposure_2010S.jpg",
         productId: 6,
       },
     ],

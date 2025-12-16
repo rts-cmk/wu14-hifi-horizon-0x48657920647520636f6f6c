@@ -248,6 +248,7 @@
 
             &__image{
                 width: 200px;
+                aspect-ratio: 1/.5;
                 margin-bottom: 20px;
             }
 
@@ -487,7 +488,7 @@
 
         .filters{
             background-color: var.$bg-color-lighter-gray;
-            display: none;
+            display: flex;
             flex-direction: column;
             padding: 20px 10px 15px 10px;
 
