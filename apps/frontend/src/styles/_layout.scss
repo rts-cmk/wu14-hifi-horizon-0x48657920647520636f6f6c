@@ -504,11 +504,17 @@
             background-color: var.$bg-color-lighter-gray;
             flex-direction: column;
             padding: 20px 10px 15px 10px;
+            margin: 0;
+            list-style: none;
 
-            &__label{
+            &__item{
                 margin-bottom: 10px;
                 display: flex;
                 justify-content: space-between;
+            }
+
+            &__title{
+                margin: 0;
             }
 
             &__checkbox{

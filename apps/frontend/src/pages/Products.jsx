@@ -35,37 +35,56 @@ export default function Products(){
                 <div className="products-filter">
                     <h2 className="products-filter__title">Sort by</h2>
                     <button onClick={() => setCategoriesyDisplay(categoriesDisplay === "none" ? "flex" : "none")} className="products-filter__hide-btn">Category <span className="products-filter__hide-btn--icon"><FiChevronUp display={categoriesDisplay === "none" ? "block" : "none"} /><FiChevronDown display={categoriesDisplay === "none" ? "none" : "block"}/></span></button>
-                    <form className="filters" style={{display: categoriesDisplay}}>
+                    <ul className="filters" style={{display: categoriesDisplay}}>
                         {
                             categoriesdata.map((category => {
                                 return(
-                                    <label key={category.name} className="filters__label" htmlFor="placeholder1">
-                                        {category.name}
-                                        <button style={{color: categoryBtnColor === category.name ? "#008000" : "#ffffff"}} onClick={(e) => handleCategoryClick(e, category.name)} className="filters__checkbox" id="placeholder1"><FiCheck /></button>
-                                    </label>
+                                    <li key={category.name} className="filters__item">
+                                        <p className="filters__title">{category.name}</p>
+                                        <button style={{color: categoryBtnColor === category.name ? "#008000" : "#ffffff"}} onClick={(e) => handleCategoryClick(e, category.name)} className="filters__checkbox"><FiCheck /></button>
+                                    </li>
                                 )
                             }))
                         }
-                    </form>
+                    </ul>
                     <button onClick={() => setColorDisplay(colorDisplay === "none" ? "flex" : "none")} className="products-filter__hide-btn">Color <span className="products-filter__hide-btn--icon"><FiChevronUp display={colorDisplay === "none" ? "block" : "none"} /><FiChevronDown display={colorDisplay === "none" ? "none" : "block"}/></span></button>
-                    <form className="filters" style={{display: colorDisplay}}>
-                        <label className="filters__label" htmlFor="placeholder1">
-                            placeholder1
-                            <button className="filters__checkbox" id="placeholder1"><FiCheck /></button>
-                        </label>
-                        <label className="filters__label" htmlFor="placeholder2">
-                            placeholder2
-                            <button className="filters__checkbox" id="placeholder2"><FiCheck /></button>
-                        </label>
-                        <label className="filters__label" htmlFor="placeholder3">
-                            placeholder3
-                            <button className="filters__checkbox" id="placeholder3"><FiCheck /></button>
-                        </label>
-                    </form>
+                    <ul className="filters" style={{display: colorDisplay}}>
+                        <li className="filters__item">
+                            <p className="filters__title">White</p>
+                            <button className="filters__checkbox"><FiCheck /></button>
+                        </li>
+                        <li className="filters__item">
+                            <p className="filters__title">Black</p>
+                            <button className="filters__checkbox"><FiCheck /></button>
+                        </li>
+                        <li className="filters__item">
+                            <p className="filters__title">Grey</p>
+                            <button className="filters__checkbox"><FiCheck /></button>
+                        </li>
+                    </ul>
                     <button onClick={() => setPriceDisplay(priceDisplay === "none" ? "flex" : "none")} className="products-filter__hide-btn">Price <span className="products-filter__hide-btn--icon"><FiChevronUp display={priceDisplay === "none" ? "block" : "none"} /><FiChevronDown display={priceDisplay === "none" ? "none" : "block"}/></span></button>
-                    <form className="filters" style={{display: priceDisplay}}>
-                        <input className="filters__price-range" type="range" id="price-range" />
-                    </form>
+                    <ul className="filters" style={{display: priceDisplay}}>
+                        <li className="filters__item">
+                            <p className="filters__title">Min - 500</p>
+                            <button className="filters__checkbox"><FiCheck /></button>
+                        </li>
+                        <li className="filters__item">
+                            <p className="filters__title">501 - 1000</p>
+                            <button className="filters__checkbox"><FiCheck /></button>
+                        </li>
+                        <li className="filters__item">
+                            <p className="filters__title">1001 - 2000</p>
+                            <button className="filters__checkbox"><FiCheck /></button>
+                        </li>
+                        <li className="filters__item">
+                            <p className="filters__title">2001 - 3000</p>
+                            <button className="filters__checkbox"><FiCheck /></button>
+                        </li>
+                        <li className="filters__item">
+                            <p className="filters__title">3001 - Max</p>
+                            <button className="filters__checkbox"><FiCheck /></button>
+                        </li>
+                    </ul>
                 </div>
                 <ul className="products-list">
                     {
