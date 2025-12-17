@@ -462,7 +462,8 @@
     &-filter{
         display: flex;
         flex-direction: column;
-        padding: 0 20px;
+        padding: 0 3vw;
+        margin-bottom: 20px;
 
         &__title{
             margin-top: 0;
@@ -492,7 +493,6 @@
 
         .filters{
             background-color: var.$bg-color-lighter-gray;
-            display: flex;
             flex-direction: column;
             padding: 20px 10px 15px 10px;
 
@@ -509,6 +509,67 @@
                 font-size: .875rem;
                 padding: 3px;
                 background-color: var.$bg-color-light;
+            }
+        }
+    }
+
+    &-list{
+        list-style: none;
+        padding: 0 15px;
+        margin: 0;
+
+        .list-product{
+            display: flex;
+            flex-direction: column;
+            background-color: var.$bg-color-light;
+            padding: 10px;
+
+            &__compare-btn{
+                display: flex;
+                background-color: transparent;
+                border: none;
+                align-self: end;
+                padding: 0;
+                font-weight: 500;
+                font-size: .85rem;
+                margin-bottom: 10px;
+
+                &--icon{
+                    font-size: 1.4rem;
+                    margin-left: 5px;
+                }
+            }
+
+            .product-info{
+                color: var.$font-color-dark;
+                text-decoration: none;
+                
+                &__picture{
+                    width: 100%;
+                    margin-bottom: 15px;
+                }
+
+                &__title, &__type{
+                    font-weight: 400;
+                    font-size: 1rem;
+                    text-align: center;
+                    margin-top: 0;
+                }
+
+                &__title{
+                    margin-bottom: 10px;
+                }
+
+                &__type{
+                    margin-bottom: 30px;
+                }
+
+                &__price{
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                    text-align: center;
+                    margin-top: 0;                    
+                }
             }
         }
     }

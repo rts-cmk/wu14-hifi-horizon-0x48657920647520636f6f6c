@@ -1,15 +1,37 @@
-import { FiCheck, FiChevronUp, FiSliders } from "react-icons/fi";
-import { Link } from "react-router";
+import { useState } from "react";
+import { FiCheck, FiChevronDown, FiChevronUp, FiSliders } from "react-icons/fi";
+import { Link, useLoaderData } from "react-router";
 
 export default function Products(){
+
+    // const {products: productsdata} = useLoaderData()
+    const {categories: categoriesdata} = useLoaderData()
+
+    const [categoriesDisplay, setCategoriesyDisplay] = useState("none")
+    const [colorDisplay, setColorDisplay] = useState("none")
+    const [priceDisplay, setPriceDisplay] = useState("none")
+
     return(
         <>
             <h1 className="main__title">PRODUCTS</h1>
             <section className="products">
                 <div className="products-filter">
                     <h2 className="products-filter__title">Sort by</h2>
-                    <button className="products-filter__hide-btn">Brand <span className="products-filter__hide-btn--icon"><FiChevronUp /></span></button>
-                    <form className="filters" >
+                    <button onClick={() => setCategoriesyDisplay(categoriesDisplay === "none" ? "flex" : "none")} className="products-filter__hide-btn">Category <span className="products-filter__hide-btn--icon"><FiChevronUp display={categoriesDisplay === "none" ? "block" : "none"} /><FiChevronDown display={categoriesDisplay === "none" ? "none" : "block"}/></span></button>
+                    <form className="filters" style={{display: categoriesDisplay}}>
+                        {
+                            categoriesdata.map((category => {
+                                return(
+                                    <label key={category.name} className="filters__label" htmlFor="placeholder1">
+                                        {category.name}
+                                        <button className="filters__checkbox" id="placeholder1"><FiCheck /></button>
+                                    </label>
+                                )
+                            }))
+                        }
+                    </form>
+                    <button onClick={() => setColorDisplay(colorDisplay === "none" ? "flex" : "none")} className="products-filter__hide-btn">Color <span className="products-filter__hide-btn--icon"><FiChevronUp display={colorDisplay === "none" ? "block" : "none"} /><FiChevronDown display={colorDisplay === "none" ? "none" : "block"}/></span></button>
+                    <form className="filters" style={{display: colorDisplay}}>
                         <label className="filters__label" htmlFor="placeholder1">
                             placeholder1
                             <button className="filters__checkbox" id="placeholder1"><FiCheck /></button>
@@ -23,38 +45,23 @@ export default function Products(){
                             <button className="filters__checkbox" id="placeholder3"><FiCheck /></button>
                         </label>
                     </form>
-                    <button className="products-filter__hide-btn">Color <span className="products-filter__hide-btn--icon"><FiChevronUp /></span></button>
-                    <form className="filters" >
-                        <label className="filters__label" htmlFor="placeholder1">
-                            placeholder1
-                            <button className="filters__checkbox" id="placeholder1"><FiCheck /></button>
-                        </label>
-                        <label className="filters__label" htmlFor="placeholder2">
-                            placeholder2
-                            <button className="filters__checkbox" id="placeholder2"><FiCheck /></button>
-                        </label>
-                        <label className="filters__label" htmlFor="placeholder3">
-                            placeholder3
-                            <button className="filters__checkbox" id="placeholder3"><FiCheck /></button>
-                        </label>
-                    </form>
-                    <button className="products-filter__hide-btn">Price <span className="products-filter__hide-btn--icon"><FiChevronUp /></span></button>
-                    <form className="filters" >
+                    <button onClick={() => setPriceDisplay(priceDisplay === "none" ? "flex" : "none")} className="products-filter__hide-btn">Price <span className="products-filter__hide-btn--icon"><FiChevronUp display={priceDisplay === "none" ? "block" : "none"} /><FiChevronDown display={priceDisplay === "none" ? "none" : "block"}/></span></button>
+                    <form className="filters" style={{display: priceDisplay}}>
                         <input className="filters__price-range" type="range" id="price-range" />
                     </form>
                 </div>
                 <ul className="products-list">
-                    <li className="list-item">
-                        <button className="list-item__compare-btn">Compare <FiSliders /></button>
-                        <Link className="item-info" to="/details">
-                            <img className="item-info__picture" src="https://placehold.co/200x100" alt="" />
-                            <h3 className="item-info__title">Auralic Aries G2.1 Streamer</h3>
-                            <p className="item-info__type">(Digital Output)</p>
-                            <p className="item-info__price">£ 4,799.00</p>
+                    <li className="list-product">
+                        <button className="list-product__compare-btn">Compare <FiSliders className="list-product__compare-btn--icon"/></button>
+                        <Link className="product-info" to="/details">
+                            <img className="product-info__picture" src="https://placehold.co/200x100" alt="" />
+                            <h3 className="product-info__title">Auralic Aries G2.1 Streamer</h3>
+                            <p className="product-info__type">(Digital Output)</p>
+                            <p className="product-info__price">£ 4,799.00</p>
                         </Link>
-                        <div className="item-action">
-                            <button className="item-action__cart-btn">Add to cart</button>
-                            <p className="item-action__stock">In Stock <span></span></p>
+                        <div className="product-action">
+                            <button className="product-action__cart-btn">Add to cart</button>
+                            <p className="product-action__stock">In Stock <span></span></p>
                         </div>
                     </li>
                 </ul>
