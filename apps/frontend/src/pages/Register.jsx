@@ -3,32 +3,46 @@ import { useNavigate, Link } from "react-router";
 import { useAuth } from "../context/Auth";
 import { register as apiRegister } from "../services/api";
 import "../styles/login.scss"
-import React from "react"
+
 export default function RegisterPage() {
   const [error, setError] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
-  /**
-   * 
-   * @param {FormData} formdata 
-   */
-  const handleSubmit = async (formdata) => {
-    setError("");
-    const name = formdata.get("name");
-    const adress = formdata.get("name");
-    const adress2 = formdata.get("name");
-    const zipCode = formdata.get("name");
-    const city = formdata.get("city");
-    const country = formdata.get("name");
-    const phone = formdata.get("phone");
-    const email = formdata.get("email");
-    const password = formdata.get("password");
-    const passwordRepeated = formdata.get("passwordRepeated");
-    const marketing = formdata.get("marketing")
-    const acceptDataCollection = formdata.get("dataCollection")
+
+  const handleSubmit = async (formData) => {
+
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const passwordRepeated = formData.get("passwordRepeated");
+    const addressLine1 = formData.get("addressLine1");
+    const addressLine2 = formData.get("addressLine2");
+    const city = formData.get("city");
+    const state = formData.get("state");
+    const postalCode = formData.get("postalCode");
+    const country = formData.get("country");
+
+    if (password !== passwordRepeated) {
+      setError("Passwords do not match");
+      return;
+    }
 
     try {
-      const user = await apiRegister(username, email, password);
+      const userData = {
+        name,
+        email,
+        password,
+        shipping: {
+          addressLine1,
+          addressLine2: addressLine2 || undefined,
+          city,
+          state,
+          postalCode,
+          country
+        }
+      };
+      console.log(userData)
+      const user = await apiRegister(userData);
       if (user) {
         login(user);
         navigate("/");
@@ -44,15 +58,15 @@ export default function RegisterPage() {
     <div className="login-container">
       <h1>Register</h1>
       {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
+      <form action={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="username">Full Name</label>
+          <label htmlFor="username">Full name</label>
           <input
             type="text"
             id="name"
             name="name"
-            placeholder="Jhon Doe"
-            value={username}
+            autoComplete="name"
+            placeholder="Full name"
             required
           />
         </div>
@@ -62,8 +76,8 @@ export default function RegisterPage() {
             type="email"
             id="email"
             name="email"
+            autoComplete="email"
             placeholder="Email"
-            value={email}
             required
           />
         </div>
@@ -72,44 +86,87 @@ export default function RegisterPage() {
           <input
             type="password"
             id="password"
+            autoComplete="new-password"
             name="password"
             placeholder="Password"
-            value={password}
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="passwordRepeated">Confirm Password</label>
           <input
-            type="text"
-            id="password"
-            name="password"
-            placeholder="Password"
-            value={password}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="text"
-            id="password"
-            name="password"
-            placeholder="Password"
-            value={password}
+            type="password"
+            id="passwordRepeated"
+            name="passwordRepeated"
+            autoComplete="new-password"
+            placeholder="Confirm Password"
             required
           />
         </div>
 
+        <h2>Shipping Address</h2>
+
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="addressLine1">Address Line 1</label>
           <input
             type="text"
-            id="password"
-            name="password"
-            placeholder="Password"
-            value={password}
+            id="addressLine1"
+            name="addressLine1"
+            autoComplete="address-line1"
+            placeholder="Street address"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="addressLine2">Address Line 2 (Optional)</label>
+          <input
+            type="text"
+            id="addressLine2"
+            name="addressLine2"
+            autoComplete="address-line2"
+            placeholder="Apartment, suite, etc."
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="city">City</label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            autoComplete="address-level2"
+            placeholder="City"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="state">State/Province</label>
+          <input
+            type="text"
+            id="state"
+            name="state"
+            placeholder="State/Province"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="postalCode">Postal Code</label>
+          <input
+            type="text"
+            id="postalCode"
+            name="postalCode"
+            placeholder="Postal Code"
+            autoComplete="postal-code"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="country">Country</label>
+          <input
+            type="text"
+            id="country"
+            name="country"
+            placeholder="Country"
+            autoComplete="country"
             required
           />
         </div>

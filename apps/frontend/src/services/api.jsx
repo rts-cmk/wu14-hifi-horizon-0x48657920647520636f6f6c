@@ -31,13 +31,13 @@ export const login = async (username, password) => {
   return null;
 };
 
-export const register = async (username, email, password) => {
+export const register = async (userData) => {
   const response = await fetch(`/api/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ username, email, password })
+    body: JSON.stringify(userData)
   });
 
   if (response.status === 201) {
@@ -46,6 +46,16 @@ export const register = async (username, email, password) => {
       return data.user;
     }
   }
+  
+  if (response.status === 422) {
+    const data = await response.json();
+    throw new Error(data.message || "Validation failed");
+  }
+  
+  if (response.status === 409) {
+    throw new Error("Username already taken");
+  }
+  
   return undefined;
 };
 

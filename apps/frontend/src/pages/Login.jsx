@@ -12,7 +12,7 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    
+
     try {
       const user = await apiLogin(username, password);
       if (user) {
@@ -25,7 +25,7 @@ export default function LoginPage() {
       setError(err.message || "An error occurred during login.");
     }
   }
-  if(user) {
+  if (user) {
     console.log("user logged in, redirecting...", user);
     navigate("/");
   }

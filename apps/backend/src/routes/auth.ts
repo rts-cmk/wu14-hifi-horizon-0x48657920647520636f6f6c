@@ -160,7 +160,7 @@ router.get("/me", async (req, res) => {
     username: userTable.name,
     email: userTable.email,
   }).from(userTable).where(eq(userTable.id, req.user!.id))
-  return res.json(dbUser);
+  return res.json(dbUser[0]);
 })
 
 export default router;
