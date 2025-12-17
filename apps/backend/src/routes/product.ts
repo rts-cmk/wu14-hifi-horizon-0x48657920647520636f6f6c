@@ -9,11 +9,8 @@ const router = express.Router();
 router.get("/", async (_req, res) => {
   const otherProducts = await db.query.productTable.findMany({
     columns: {
-      description: true,
-      name: true,
-      price: true,
-      specs: true,
-      summery: true,
+      categoryId: false,
+      id: false,
     },
     with: {
       category: {
@@ -22,7 +19,7 @@ router.get("/", async (_req, res) => {
         }
       },
       variants: {
-        columns:{
+        columns: {
           imageURL: true,
           name: true,
         }

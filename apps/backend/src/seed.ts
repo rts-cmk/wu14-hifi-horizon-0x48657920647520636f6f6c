@@ -15,6 +15,13 @@ const items: fullProduct = [
       "High-quality CD player with excellent sound reproduction and build quality",
     price: 150,
     categoryId: 1,
+    specs: {
+      dac: "Burr-Brown PCM 1738 24-bit/192kHz",
+      frequencyResponse: "1Hz - 20kHz ± 0.5dB",
+      thd: "< 0.0008% @ 1kHz",
+      dynamicRange: "> 100dB",
+      outputLevel: "2.0V RMS @ 1kHz",
+    },
     variants: [
       {
         id: 1,
@@ -31,6 +38,13 @@ const items: fullProduct = [
     description: "Premium CD player with advanced digital processing",
     price: 299,
     categoryId: 1,
+    specs: {
+      dac: "Crystal CS4396 24-bit/192kHz Delta-Sigma",
+      frequencyResponse: "1Hz - 20kHz ± 0.25dB",
+      thd: "< 0.0005% @ 1kHz",
+      snr: "> 110dB",
+      powerConsumption: "20W (max)",
+    },
     variants: [
       {
         id: 2,
@@ -47,6 +61,13 @@ const items: fullProduct = [
     description: "Modern CD player with updated technology",
     price: 199,
     categoryId: 1,
+    specs: {
+      dac: "Burr-Brown PCM 1796 24-bit/192kHz",
+      frequencyResponse: "1Hz - 20kHz ± 0.5dB",
+      thd: "< 0.0008%",
+      dynamicRange: "> 100dB",
+      channelSeparation: "> 100dB",
+    },
     variants: [
       {
         id: 3,
@@ -63,6 +84,13 @@ const items: fullProduct = [
     description: "High-end CD player with exceptional performance",
     price: 599,
     categoryId: 1,
+    specs: {
+      dac: "Burr-Brown PCM 1716 24-bit/96kHz",
+      outputLevel: "2V RMS",
+      frequencyResponse: "20Hz - 20kHz ± 0.03dB",
+      thd: "< 0.008% @ 1kHz",
+      snr: "> 100dB A-weighted",
+    },
     variants: [
       {
         id: 4,
@@ -79,6 +107,13 @@ const items: fullProduct = [
     description: "Classic integrated amplifier from Creek Audio",
     price: 399,
     categoryId: 2,
+    specs: {
+      powerOutput: "70W per channel into 8 Ohms",
+      frequencyResponse: "1Hz - 50kHz -1dB",
+      thd: "< 0.05%",
+      snr: "> 105dB",
+      inputs: "5 Line inputs + 1 Tape loop",
+    },
     variants: [
       {
         id: 5,
@@ -95,6 +130,13 @@ const items: fullProduct = [
     description: "Premium integrated amplifier with excellent sound quality",
     price: 799,
     categoryId: 2,
+    specs: {
+      powerOutput: "75W per channel into 8 Ohms",
+      frequencyResponse: "20Hz - 20kHz ± 0.5dB",
+      thd: "< 0.05% @ 1kHz",
+      snr: "> 100dB A-weighted",
+      inputImpedance: "14k Ohms",
+    },
     variants: [
       {
         id: 6,
@@ -111,6 +153,13 @@ const items: fullProduct = [
     description: "High-performance power amplifier",
     price: 1299,
     categoryId: 2,
+    specs: {
+      powerOutput: "110W x 7 into 8 Ohms",
+      frequencyResponse: "20Hz - 20kHz",
+      thd: "0.05%",
+      snr: "100dB",
+      dampingFactor: "> 60",
+    },
     variants: [
       {
         id: 7,
@@ -127,6 +176,13 @@ const items: fullProduct = [
     description: "Premium DAC and preamplifier combo",
     price: 2499,
     categoryId: 3,
+    specs: {
+      formats: "DVD-A, DVD-V, SACD, CD, MP3",
+      dac: "24-bit/192kHz Audio DACs",
+      videoOutput: "HDMI, Component, S-Video, Composite",
+      audioOutput: "XLR Balanced, RCA Unbalanced",
+      thd: "< 0.002%",
+    },
     variants: [
       {
         id: 8,
@@ -143,6 +199,13 @@ const items: fullProduct = [
     description: "Tube power amplifier with warm sound signature",
     price: 3499,
     categoryId: 2,
+    specs: {
+      tubes: "4 x EL84, 1 x 12AT7, 1 x 6414",
+      powerOutput: "20W Triode / 40W Ultralinear",
+      frequencyResponse: "10Hz - 30kHz",
+      inputSensitivity: "550mV",
+      inputImpedance: "100k Ohms",
+    },
     variants: [
       {
         id: 9,
@@ -159,6 +222,13 @@ const items: fullProduct = [
     description: "Luxury 300B tube amplifier",
     price: 8999,
     categoryId: 2,
+    specs: {
+      tubes: "2 x 300B, 1 x 6SL7, 1 x 6SN7",
+      powerOutput: "12W Single-Ended / 24W Push-Pull",
+      frequencyResponse: "10Hz - 30kHz",
+      thd: "< 0.15%",
+      inputImpedance: "100k Ohms",
+    },
     variants: [
       {
         id: 10,
@@ -175,6 +245,13 @@ const items: fullProduct = [
     description: "Compact tube amplifier with excellent dynamics",
     price: 1999,
     categoryId: 2,
+    specs: {
+      tubes: "4 x EL34, 1 x 12AT7, 1 x 7044",
+      powerOutput: "100W into 5 Ohms",
+      frequencyResponse: "15Hz - 40kHz",
+      thd: "< 0.1%",
+      inputSensitivity: "750mV",
+    },
     variants: [
       {
         id: 11,
@@ -191,6 +268,13 @@ const items: fullProduct = [
     description: "High-end power amplifier with exceptional clarity",
     price: 2999,
     categoryId: 2,
+    specs: {
+      powerOutput: "125W x 2 into 8 Ohms",
+      frequencyResponse: "5Hz - 100kHz",
+      thd: "< 0.03%",
+      snr: "> 112dB",
+      dampingFactor: "> 800",
+    },
     variants: [
       {
         id: 12,
@@ -207,6 +291,13 @@ const items: fullProduct = [
     description: "Passive preamplifier with transparent sound",
     price: 299,
     categoryId: 3,
+    specs: {
+      type: "Passive Line Pre-amplifier",
+      inputs: "2 x RCA pairs",
+      outputs: "1 x RCA pair (variable), 1 x RCA pair (fixed)",
+      crosstalk: "> 80dB",
+      channelSeparation: "> 80dB",
+    },
     variants: [
       {
         id: 13,
@@ -223,6 +314,13 @@ const items: fullProduct = [
     description: "Classic preamplifier with warm sound",
     price: 899,
     categoryId: 3,
+    specs: {
+      channels: "7.1 Channel Surround",
+      decoding: "Dolby Digital EX, DTS-ES, Pro Logic IIx",
+      inputs: "7 Audio/Video, 4 Digital",
+      outputs: "7.1 Pre-out, Component Video",
+      thd: "< 0.005%",
+    },
     variants: [
       {
         id: 14,
@@ -239,6 +337,13 @@ const items: fullProduct = [
     description: "Premium phono preamplifier for vinyl lovers",
     price: 1199,
     categoryId: 3,
+    specs: {
+      frequencyResponse: "5Hz - 100kHz",
+      thd: "< 0.01%",
+      snr: "> 108dB",
+      inputs: "6 Line Level, 1 Phono (MM/MC)",
+      outputs: "XLR Balanced, RCA Unbalanced",
+    },
     variants: [
       {
         id: 15,
@@ -255,6 +360,13 @@ const items: fullProduct = [
     description: "Compact preamplifier with excellent value",
     price: 499,
     categoryId: 3,
+    specs: {
+      frequencyResponse: "20Hz - 20kHz",
+      thd: "< 0.001%",
+      gain: "0dB",
+      inputs: "2 x RCA pairs",
+      outputs: "1 x RCA pair",
+    },
     variants: [
       {
         id: 16,
@@ -271,6 +383,13 @@ const items: fullProduct = [
     description: "Premium wall-mounted speaker system",
     price: 4999,
     categoryId: 4,
+    specs: {
+      type: "2-way Wall Mount Speaker",
+      drivers: "1 x Tweeter, 1 x Mid-Bass",
+      frequencyResponse: "50Hz - 20kHz",
+      impedance: "4 Ohms",
+      sensitivity: "88dB",
+    },
     variants: [
       {
         id: 17,
@@ -287,6 +406,13 @@ const items: fullProduct = [
     description: "Compact bookshelf speakers with detailed sound",
     price: 799,
     categoryId: 4,
+    specs: {
+      type: "2-way Bookshelf",
+      powerHandling: "100W",
+      frequencyResponse: "60Hz - 20kHz",
+      impedance: "4 Ohms",
+      sensitivity: "87dB",
+    },
     variants: [
       {
         id: 18,
@@ -303,6 +429,13 @@ const items: fullProduct = [
     description: "Premium bookshelf speakers with natural sound",
     price: 2499,
     categoryId: 4,
+    specs: {
+      type: "2-way Vented Box",
+      drivers: "200mm RADIAL mid/bass, 25mm dome tweeter",
+      frequencyResponse: "48Hz - 20kHz ± 3dB",
+      impedance: "6 Ohms",
+      sensitivity: "86dB",
+    },
     variants: [
       {
         id: 19,
@@ -319,6 +452,13 @@ const items: fullProduct = [
     description: "Professional studio monitors with accurate sound",
     price: 3499,
     categoryId: 4,
+    specs: {
+      type: "2-way Vented Monitor",
+      drivers: "200mm RADIAL2 mid/bass, 25mm soft dome tweeter",
+      frequencyResponse: "50Hz - 20kHz ± 3dB",
+      impedance: "6 Ohms",
+      sensitivity: "85dB",
+    },
     variants: [
       {
         id: 20,
@@ -335,6 +475,13 @@ const items: fullProduct = [
     description: "Compact speakers with exceptional sound quality",
     price: 1899,
     categoryId: 4,
+    specs: {
+      type: "2-way Sealed Box",
+      drivers: "110mm RADIAL2 mid/bass, 19mm dome tweeter",
+      frequencyResponse: "75Hz - 20kHz ± 3dB",
+      impedance: "6 Ohms",
+      sensitivity: "83.5dB",
+    },
     variants: [
       {
         id: 21,
@@ -351,6 +498,13 @@ const items: fullProduct = [
     description: "Integrated amplifier with built-in DAC",
     price: 899,
     categoryId: 2,
+    specs: {
+      powerOutput: "50W per channel into 8 Ohms",
+      frequencyResponse: "3Hz - 25kHz -1dB",
+      thd: "< 0.05%",
+      snr: "> 100dB",
+      inputs: "4 Line inputs, 1 Tape loop",
+    },
     variants: [
       {
         id: 22,
@@ -367,6 +521,13 @@ const items: fullProduct = [
     description: "Special edition integrated amplifier",
     price: 1299,
     categoryId: 2,
+    specs: {
+      powerOutput: "90W per channel into 8 Ohms",
+      frequencyResponse: "1Hz - 50kHz -1dB",
+      thd: "< 0.05%",
+      snr: "> 105dB",
+      currentOutput: "> 25 Amps peak",
+    },
     variants: [
       {
         id: 23,
@@ -383,6 +544,13 @@ const items: fullProduct = [
     description: "High-end integrated amplifier with premium components",
     price: 2499,
     categoryId: 2,
+    specs: {
+      powerOutput: "100W per channel into 8 Ohms",
+      frequencyResponse: "1Hz - 30kHz ± 0.5dB",
+      thd: "< 0.02%",
+      snr: "> 102dB",
+      inputs: "5 Line inputs + 1 Tape loop",
+    },
     variants: [
       {
         id: 24,
@@ -399,6 +567,13 @@ const items: fullProduct = [
     description: "Iconic tube integrated amplifier",
     price: 4499,
     categoryId: 2,
+    specs: {
+      tubes: "8 x EL84, 2 x 12AT7, 2 x 6414",
+      powerOutput: "20W Triode / 40W Ultralinear",
+      frequencyResponse: "15Hz - 58kHz",
+      thd: "< 0.1%",
+      inputs: "4 x RCA pairs",
+    },
     variants: [
       {
         id: 25,
@@ -415,6 +590,13 @@ const items: fullProduct = [
     description: "Entry-level turntable with blue finish",
     price: 399,
     categoryId: 5,
+    specs: {
+      drive: "Belt drive",
+      speeds: "33, 45 RPM",
+      platter: "280mm steel",
+      tonearm: "8.6 inch aluminum",
+      cartridge: "Ortofon OM 5E",
+    },
     variants: [
       {
         id: 26,
@@ -476,6 +658,13 @@ const items: fullProduct = [
     description: "High-end turntable with advanced features",
     price: 2999,
     categoryId: 5,
+    specs: {
+      drive: "Belt drive with decoupled motor",
+      speeds: "33, 45 RPM",
+      platter: "5.4kg acrylic",
+      tonearm: "10cc Evolution carbon fiber",
+      base: "Granite filled plinth",
+    },
     variants: [
       {
         id: 30,
@@ -492,6 +681,13 @@ const items: fullProduct = [
     description: "Mid-range turntable with excellent performance",
     price: 999,
     categoryId: 5,
+    specs: {
+      drive: "Belt drive",
+      speeds: "33, 45 RPM",
+      platter: "MDF with vinyl mat",
+      tonearm: "9cc carbon fiber",
+      motor: "Decoupled AC motor",
+    },
     variants: [
       {
         id: 31,
@@ -508,6 +704,13 @@ const items: fullProduct = [
     description: "Hybrid integrated amplifier with tube preamp",
     price: 699,
     categoryId: 2,
+    specs: {
+      tubes: "4 x EL84, 2 x 12AT7",
+      powerOutput: "20W per channel",
+      frequencyResponse: "7Hz - 95kHz ± 1dB",
+      thd: "< 1%",
+      snr: "> 80dB",
+    },
     variants: [
       {
         id: 32,
@@ -524,6 +727,13 @@ const items: fullProduct = [
     description: "Tube integrated amplifier with warm sound",
     price: 999,
     categoryId: 2,
+    specs: {
+      tubes: "4 x EL34, 2 x 12AX7, 2 x 12AT7",
+      powerOutput: "40W per channel",
+      frequencyResponse: "8Hz - 130kHz + 1dB",
+      thd: "< 1%",
+      snr: "> 85dB",
+    },
     variants: [
       {
         id: 33,
@@ -540,6 +750,13 @@ const items: fullProduct = [
     description: "Premium 300B tube integrated amplifier",
     price: 2499,
     categoryId: 2,
+    specs: {
+      tubes: "2 x 300B, 2 x 12AX7, 2 x 12AT7",
+      powerOutput: "9W per channel Single-Ended",
+      frequencyResponse: "8Hz - 130kHz + 1dB",
+      thd: "< 1%",
+      snr: "> 85dB",
+    },
     variants: [
       {
         id: 34,
@@ -556,6 +773,13 @@ const items: fullProduct = [
     description: "Compact tube amplifier with excellent sound",
     price: 799,
     categoryId: 2,
+    specs: {
+      tubes: "4 x EL34, 2 x 12AX7, 2 x 12AT7",
+      powerOutput: "50W per channel",
+      frequencyResponse: "8Hz - 130kHz + 1dB",
+      thd: "< 1%",
+      snr: "> 85dB",
+    },
     variants: [
       {
         id: 35,
@@ -572,6 +796,13 @@ const items: fullProduct = [
     description: "Powerful tube amplifier for demanding speakers",
     price: 1499,
     categoryId: 2,
+    specs: {
+      tubes: "4 x 6550/KT88, 2 x 12AX7, 2 x 12AT7",
+      powerOutput: "60W per channel",
+      frequencyResponse: "8Hz - 130kHz + 1dB",
+      thd: "< 1%",
+      snr: "> 85dB",
+    },
     variants: [
       {
         id: 36,
@@ -630,7 +861,6 @@ const categories = [
   { id: 5, name: "Turntables" },
 ];
 
-const categoryMap = new Map<string, number>();
 
 async function main() {
   const firstRandomItem = await db.query.productTable.findFirst();
