@@ -223,6 +223,7 @@
             background-color: var.$bg-color-light;
             padding-top: 11vw;
             align-items: center;
+            z-index: 2;
             @include mix.mediaScreen(468px, 767px){
                 padding-top: (calc(11vw + 27px));
             }
@@ -288,6 +289,7 @@
             background-color: var.$bg-color-light;
             padding-top: 5vw;
             align-items: center;
+            z-index: 2;
             @include mix.screenMd(){
                 width: 340px;
                 top: 85px;

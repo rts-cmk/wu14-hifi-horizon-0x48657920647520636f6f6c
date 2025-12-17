@@ -414,6 +414,10 @@
                 box-sizing: border-box;
                 padding: 5px;
                 resize: none;
+
+                &:focus {
+                    outline: none;
+                }
         }
 
         &__input{
