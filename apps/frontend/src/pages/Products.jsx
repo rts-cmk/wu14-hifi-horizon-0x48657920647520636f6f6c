@@ -61,7 +61,46 @@ export default function Products(){
                         </Link>
                         <div className="product-action">
                             <button className="product-action__cart-btn">Add to cart</button>
-                            <p className="product-action__stock">In Stock <span></span></p>
+                            <p className="product-action__stock">In Stock <span className="product-action__stock--indicator"></span></p>
+                        </div>
+                    </li>
+                    <li className="list-product">
+                        <button className="list-product__compare-btn">Compare <FiSliders className="list-product__compare-btn--icon"/></button>
+                        <Link className="product-info" to="/details">
+                            <img className="product-info__picture" src="https://placehold.co/200x100" alt="" />
+                            <h3 className="product-info__title">Auralic Aries G2.1 Streamer</h3>
+                            <p className="product-info__type">(Digital Output)</p>
+                            <p className="product-info__price">£ 4,799.00</p>
+                        </Link>
+                        <div className="product-action">
+                            <button className="product-action__cart-btn">Add to cart</button>
+                            <p className="product-action__stock">In Stock <span className="product-action__stock--indicator"></span></p>
+                        </div>
+                    </li>
+                    <li className="list-product">
+                        <button className="list-product__compare-btn">Compare <FiSliders className="list-product__compare-btn--icon"/></button>
+                        <Link className="product-info" to="/details">
+                            <img className="product-info__picture" src="https://placehold.co/200x100" alt="" />
+                            <h3 className="product-info__title">Auralic Aries G2.1 Streamer</h3>
+                            <p className="product-info__type">(Digital Output)</p>
+                            <p className="product-info__price">£ 4,799.00</p>
+                        </Link>
+                        <div className="product-action">
+                            <button className="product-action__cart-btn">Add to cart</button>
+                            <p className="product-action__stock">In Stock <span className="product-action__stock--indicator"></span></p>
+                        </div>
+                    </li>
+                    <li className="list-product">
+                        <button className="list-product__compare-btn">Compare <FiSliders className="list-product__compare-btn--icon"/></button>
+                        <Link className="product-info" to="/details">
+                            <img className="product-info__picture" src="https://placehold.co/200x100" alt="" />
+                            <h3 className="product-info__title">Auralic Aries G2.1 Streamer</h3>
+                            <p className="product-info__type">(Digital Output)</p>
+                            <p className="product-info__price">£ 4,799.00</p>
+                        </Link>
+                        <div className="product-action">
+                            <button className="product-action__cart-btn">Add to cart</button>
+                            <p className="product-action__stock">In Stock <span className="product-action__stock--indicator"></span></p>
                         </div>
                     </li>
                 </ul>
