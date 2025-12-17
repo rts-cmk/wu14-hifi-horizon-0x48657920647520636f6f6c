@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiCheck, FiChevronDown, FiChevronUp, FiSliders } from "react-icons/fi";
-import { Link, useLoaderData, useParams, useSearchParams } from "react-router";
+import { Link, useLoaderData, useSearchParams } from "react-router";
 
 export default function Products(){
 
@@ -13,18 +13,57 @@ export default function Products(){
     const [colorDisplay, setColorDisplay] = useState("none")
     const [priceDisplay, setPriceDisplay] = useState("none")
 
-    const [filteredData, setfilteredData] = useState(paramsCategory ? productsdata.filter((product) => product.category.name === paramsCategory) : productsdata)
     const [categoryBtnColor, setCategoryBtnColor] = useState(paramsCategory || null)
-    const handleCategoryClick = (e, categoryName) => {
-        e.preventDefault()
-        if(categoryBtnColor === categoryName){
+    const [priceBtnColor, setPriceBtnColor] = useState(null)
+
+    const [selectedCategory, setSelectedCategory] = useState(null)
+    const [selectedPrice, setSelectedPrice] = useState(null)
+    const [filteredData, setfilteredData] = useState(productsdata)
+
+    useEffect(() => {
+        let data = productsdata.filter((product) => paramsCategory ? product.category.name === paramsCategory : product)
+
+        if (selectedCategory) {
+            data = data.filter(
+                product => product.category.name === selectedCategory
+            )
+        }
+
+        if (selectedPrice) {
+            const { min, max } = selectedPrice
+            data = data.filter(product => max ? product.price > min && product.price < max : product.price > min)
+        }
+
+        setfilteredData(data)
+    }, [selectedCategory, selectedPrice, productsdata])
+
+    const pricesArray = [
+        {name: "Min - 500", min: 0, max: 500}, 
+        {name: "501 - 1000", min: 501, max: 1000}, 
+        {name: "1001 - 2000", min: 1001, max: 2000}, 
+        {name: "2001 - 3000", min: 2001, max: 3000}, 
+        {name: "3001 - Max", min: 3001}
+    ]
+    
+    const handleCategoryClick = (name) => {
+        if(categoryBtnColor === name){
             setCategoryBtnColor(null)
             setSearchParams(``)
-            setfilteredData(productsdata)
+            setSelectedCategory(null)
         } else{
-            setCategoryBtnColor(categoryName)
-            setSearchParams(`category=${categoryName}`)
-            setfilteredData(productsdata.filter((product) => product.category.name === categoryName))
+            setCategoryBtnColor(name)
+            setSearchParams(`category=${name}`)
+            setSelectedCategory(name)
+        }
+    }
+
+    const handlePriceClick = (min, max, name) => {
+        if(priceBtnColor === name){
+            setPriceBtnColor(null)
+            setSelectedPrice(null)
+        } else{
+            setPriceBtnColor(name)
+            setSelectedPrice({ min, max })
         }
     }
 
@@ -41,7 +80,7 @@ export default function Products(){
                                 return(
                                     <li key={category.name} className="filters__item">
                                         <p className="filters__title">{category.name}</p>
-                                        <button style={{color: categoryBtnColor === category.name ? "#008000" : "#ffffff"}} onClick={(e) => handleCategoryClick(e, category.name)} className="filters__checkbox"><FiCheck /></button>
+                                        <button style={{color: categoryBtnColor === category.name ? "#008000" : "#ffffff"}} onClick={() => handleCategoryClick(category.name)} className="filters__checkbox"><FiCheck /></button>
                                     </li>
                                 )
                             }))
@@ -64,26 +103,16 @@ export default function Products(){
                     </ul>
                     <button onClick={() => setPriceDisplay(priceDisplay === "none" ? "flex" : "none")} className="products-filter__hide-btn">Price <span className="products-filter__hide-btn--icon"><FiChevronUp display={priceDisplay === "none" ? "block" : "none"} /><FiChevronDown display={priceDisplay === "none" ? "none" : "block"}/></span></button>
                     <ul className="filters" style={{display: priceDisplay}}>
-                        <li className="filters__item">
-                            <p className="filters__title">Min - 500</p>
-                            <button className="filters__checkbox"><FiCheck /></button>
-                        </li>
-                        <li className="filters__item">
-                            <p className="filters__title">501 - 1000</p>
-                            <button className="filters__checkbox"><FiCheck /></button>
-                        </li>
-                        <li className="filters__item">
-                            <p className="filters__title">1001 - 2000</p>
-                            <button className="filters__checkbox"><FiCheck /></button>
-                        </li>
-                        <li className="filters__item">
-                            <p className="filters__title">2001 - 3000</p>
-                            <button className="filters__checkbox"><FiCheck /></button>
-                        </li>
-                        <li className="filters__item">
-                            <p className="filters__title">3001 - Max</p>
-                            <button className="filters__checkbox"><FiCheck /></button>
-                        </li>
+                        {
+                            pricesArray.map((data) => {
+                                return(
+                                    <li key={data.name} className="filters__item">
+                                        <p className="filters__title">{data.name}</p>
+                                        <button style={{color: priceBtnColor === data.name ? "#008000" : "#ffffff"}} onClick={() => handlePriceClick(data.min, data.max, data.name)} className="filters__checkbox"><FiCheck /></button>
+                                    </li>
+                                )
+                            })
+                        }
                     </ul>
                 </div>
                 <ul className="products-list">
