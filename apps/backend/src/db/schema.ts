@@ -7,11 +7,11 @@ export const userTable = sqliteTable(
   "users",
   {
     id: int().primaryKey({ autoIncrement: true }),
-    username: text().notNull().unique(),
-    email: text().notNull(),
+    name: text().notNull(),
+    email: text().notNull().unique(),
     password: text().notNull(),
   },
-  (table) => [index("user_username_idx").on(table.username)],
+  (table) => [index("user_name_idx").on(table.name)],
 );
 
 export const shippingTable = sqliteTable("shippings", {

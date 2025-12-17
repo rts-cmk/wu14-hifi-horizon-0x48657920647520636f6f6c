@@ -11,7 +11,7 @@ const router = Router();
 
 declare global {
   namespace Express {
-    interface User extends UserTable {}
+    interface User extends UserTable { }
   }
 }
 
@@ -29,16 +29,16 @@ const fullSchema = userRegisterSchema.extend({
 })
 
 passport.use(new LocalStrategy(async (username, password, cb) => {
-  const [user] = await db.select().from(userTable).where(eq(userTable.username, username as string)).limit(1);
-  console.log("password:", password)
+  const [user] = await db.select().from(userTable).where(eq(userTable.email, username)).limit(1);
+
   if (!user) {
     console.log("user not found!")
-    return cb(null, false, { message: "Incorrect username or password" });
+    return cb(null, false, { message: "Incorrect email or password" });
   }
 
   if (!argon2.verify(user.password, password, argonOptions)) {
     console.log("password doesnt match")
-    return cb(null, false, { message: "Incorrect username or password" });
+    return cb(null, false, { message: "Incorrect email or password" });
   }
   console.log("user matched")
   return cb(null, user)
@@ -54,7 +54,7 @@ passport.serializeUser((user, cb) => {
         ...user
       },
       id: user.id,
-      username: user.username,
+      username: user.name,
     })
   })
 })
@@ -94,7 +94,7 @@ router.post("/login", (req, res, next) => {
             ...user
           },
           id: user.id,
-          username: user.username
+          username: user.name
         }
       });
     });
@@ -115,7 +115,7 @@ router.post("/register", async (req, res, next) => {
 
   try {
     const user = await db.query.userTable.findFirst({
-      where: eq(userTable.username, data.data.username)
+      where: eq(userTable.name, data.data.name)
     })
 
     if (user) {
@@ -142,7 +142,7 @@ router.post("/register", async (req, res, next) => {
         message: "Registration successful",
         user: {
           id: newUser[0]!.id,
-          username: newUser[0]!.username
+          username: newUser[0]!.name
         }
       });
     })
@@ -157,7 +157,7 @@ router.get("/me", async (req, res) => {
   }
   const dbUser = await db.select({
     id: userTable.id,
-    username: userTable.username,
+    username: userTable.name,
     email: userTable.email,
   }).from(userTable).where(eq(userTable.id, req.user!.id))
   return res.json(dbUser);
