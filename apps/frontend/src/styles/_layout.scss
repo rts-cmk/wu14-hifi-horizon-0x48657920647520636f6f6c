@@ -570,10 +570,14 @@
                 color: var.$font-color-dark;
                 text-decoration: none;
                 margin-bottom: 25px;
+                display: flex;
+                flex-direction: column;
+                height: 100%;
                 
                 &__picture{
                     width: 100%;
-                    margin-bottom: 15px;
+                    aspect-ratio: 1/.5;
+                    margin-bottom: auto;
                 }
 
                 &__title, &__type{

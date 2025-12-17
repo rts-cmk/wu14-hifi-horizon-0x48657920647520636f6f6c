@@ -71,7 +71,7 @@ export default function Nav(){
                     <ul className="categories-list">
                         {
                             categoriesData.map((category) => {
-                                return <li key={category.id} onClick={() => closeCategoryClick()} className="categories-list__category"><Link className="categories-list__link" to="/products">{category.name}</Link></li>
+                                return <li key={category.id} onClick={() => closeCategoryClick()} className="categories-list__category"><Link className="categories-list__link" to={`/products?category=${category.name}`}>{category.name}</Link></li>
                             })
                         }
                     </ul>
