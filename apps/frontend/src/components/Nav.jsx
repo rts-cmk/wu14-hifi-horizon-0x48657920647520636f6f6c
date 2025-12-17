@@ -1,6 +1,7 @@
 import { Link, useLoaderData, useNavigate } from "react-router";
 import { IoAdd, IoCaretUpSharp, IoCart, IoClose, IoMenu, IoPerson, IoRemove, IoSearch } from "react-icons/io5";
 import { useEffect, useState } from "react";
+import { useAuth } from "../context/Auth.jsx"
 
 export default function Nav(){
 
@@ -22,6 +23,7 @@ export default function Nav(){
             setCategoriesDisplay(false)
         }
     }
+  }
 
     const handleCategoriesClick = () => {
         if(categoriesDisplay === false){
@@ -34,10 +36,16 @@ export default function Nav(){
             navigate("/products")
         }
     }
+  }
 
     const closeCategoryClick = () => {
         setCategoriesDisplay(false)
+        setCartDisplay(false)
+      } else {
+        setSearchbarDisplay(false)
+      }
     }
+  }
 
     const handleSearchbarClick = () => {
         if(window.screen.width < 768){
@@ -51,6 +59,20 @@ export default function Nav(){
             }
         }
     }
+  }
+
+  const handleProfileClick = () => {
+    if (!auth) {
+      setShowLoginOptions(true);
+      return setTimeout(() => {
+        document.addEventListener("click", () => {
+          console.log("doing 2")
+          setShowLoginOptions(false)
+        }, { once: true })
+
+      }, 100)
+    navigate("/profile")
+  }
 
     const handleCartClick = () => {
         if(cartDisplay === false){
@@ -62,6 +84,8 @@ export default function Nav(){
             setCartDisplay(false)
         }
     }
+    navigate("/profile")
+  }
 
     return(
         <nav className="nav">
@@ -104,7 +128,18 @@ export default function Nav(){
                     <input id="search" className={`searchbar__input searchbar__input--display-${searchbarDisplay}`} type="text" placeholder="Search Product..."/>
                     <button onClick={() => handleSearchbarClick()} className="searchbar__btn" type="submit"><IoSearch className={`searchbar__btn--color-${searchbarDisplay}`}/></button>
                 </search>
-                <Link className="navigation-section__profile" to="/profile"><IoPerson /></Link>
+        <div className="navigation-section__profile">
+          <button onClick={() => handleProfileClick()} className="navigation-section__profile__button"><IoPerson /></button>
+          <div className={`navigation-section__profile__options ${!showLoginOption ? "hidden" : ""}`}>
+            <Link to="/login">
+              Login
+            </Link>
+            <Link to="/Register">
+              Register
+            </Link>
+          </div>
+        </div>
+        <button onClick={() => handleCartClick()} className="navigation-section__cart-btn"><IoCart className={`navigation-section__cart-btn--color-${cartDisplay}`} /></button>
                 <button onClick={() => handleCartClick()} className="navigation-section__cart-btn"><IoCart className={`navigation-section__cart-btn--color-${cartDisplay}`}/></button>
                 <button onClick={() => handleHeaderClick()} className="navigation-section__header-btn"><IoMenu display={headerDisplay ? "none" : "block"}/><IoClose style={{color: "#FF6900"}} display={headerDisplay ? "block" : "none"}/></button>
             </section>

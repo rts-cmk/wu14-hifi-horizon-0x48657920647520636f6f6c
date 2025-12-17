@@ -171,7 +171,13 @@
         }
 
         &__profile{
+          aspect-ratio: 1/1; 
+          anchor-name: --profile-button;
+          
+          &__button {
             background-color: transparent;
+            width: 100%;
+            height: 100%;
             border: none;
             color: var.$font-color-light;
             font-size: 1.5rem;
@@ -179,6 +185,30 @@
             @include mix.screenMd(){
                 font-size: 1.6rem;
             }
+          }
+          overflow: hidden;
+          &__options {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+           
+            width: 10rem;
+            position: absolute;
+            inset-block-start: anchor(end);
+            inset-inline-start: anchor(self-end);
+            position-anchor: --profile-button;
+            margin: -20px 0 0 10px;
+            &.hidden {
+              display: none;
+            }
+            & a {
+              text-decoration: none;
+              colot: black;
+              font-size: 1.15rem;
+              font-weight: 600;
+            }
+          }
+        
         }
 
         &__cart-btn{
