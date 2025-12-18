@@ -939,7 +939,7 @@
         margin-bottom: 25px;
         box-shadow: 2px 2px 5px 0 var.$bg-color-light-gray;
         @include mix.screenMd(){
-            padding: 20px;
+            padding: 30px 20px;
         }
 
         &__title{
@@ -981,6 +981,9 @@
                     background-color: var.$bg-color-lighter-gray;
                     box-sizing: border-box;
                     padding: 5px;
+                    @include mix.screenMd(){
+                        width: 70%;
+                    }
                 }
             }
 
@@ -992,6 +995,9 @@
                 border-radius: 3px;
                 padding: 10px 35px;
                 margin: 20px 0;
+                @include mix.screenMd(){
+                    align-self: start;
+                }
             }
 
         }
@@ -1010,7 +1016,7 @@
         box-shadow: 2px 2px 5px 0 var.$bg-color-light-gray;
         text-align: center;
         @include mix.screenMd(){
-            padding: 20px;
+            padding: 30px 20px;
         }
 
         &__title{
@@ -1033,6 +1039,9 @@
             color: var.$font-color-light;
             border-radius: 3px;
             padding: 10px 35px;
+            @include mix.screenMd(){
+                align-self: center;
+            }
         }
     }
 }
