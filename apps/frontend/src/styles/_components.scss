@@ -57,7 +57,9 @@
                 text-decoration: none;
                 font-size: .875rem;
                 margin-bottom: 50px;
-                
+                &:hover{
+                    font-weight: 600;
+                }
                 @include mix.screenMd(){
                     margin-bottom: 0;
                     margin-right: 30px;
@@ -65,7 +67,6 @@
 
                 &:last-child{
                     margin-bottom: 20vw;
-
                     @include mix.screenMd(){
                         margin-bottom: 0;
                         margin-right: 0;
@@ -81,6 +82,9 @@
                 font-size: .875rem;
                 margin-bottom: 50px;
                 font-weight: 100;
+                &:hover{
+                    font-weight: 600;
+                }
                 @include mix.screenMd(){
                     margin-bottom: 0;
                     margin-right: 30px;
