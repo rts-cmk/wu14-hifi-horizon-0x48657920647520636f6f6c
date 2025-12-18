@@ -649,3 +649,250 @@
         }
     }
 }
+
+.product-details{
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 40px;
+
+    .details-slider{
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 40px 0;
+        align-items: center;
+        padding: 0 10px;
+
+        .details-images{
+            display: flex;
+            width: 100%;
+            margin-bottom: 30px;
+
+            &__picture{
+                width: 100%;
+                margin: 0 5px;
+            }
+
+            &__btn{
+                background-color: transparent;
+                border: none;
+                padding: 0;
+                font-size: 3rem;
+                line-height: 0;
+                color: var.$slider-color;
+            }
+        }
+
+        .details-dots{
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+
+            &__item{
+                width: 8px;
+                height: 8px;
+                background-color: var.$bg-color-light;
+                border-radius: 50%;
+                border: 2px solid var.$slider-color;
+                margin: 0 5px;
+
+                &:first-child{
+                    background-color: var.$slider-color;
+                }
+            }
+        }
+    }
+
+    .details-info{
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+
+        &__compare-btn{
+                display: flex;
+                background-color: transparent;
+                border: none;
+                align-self: end;
+                padding: 0;
+                font-weight: 500;
+                font-size: .85rem;
+                margin-bottom: 10px;
+
+                &--icon{
+                    font-size: 1.4rem;
+                    margin-left: 5px;
+                }
+        }
+
+        &__title{
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        &__subtitle{
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        &__text{
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .details-color-list{
+            display: flex;
+            padding: 0;
+            margin: 0 0 5px 0;
+            list-style: none;
+
+            &-item{
+                margin-left: 20px;
+
+                &:first-child{
+                    margin-left: 0;
+                }
+
+                &__btn{
+                    width: 25px;
+                    height: 25px;
+                    padding: 0;
+                    border-radius: 50%;
+                    border: none;
+
+                    &--black{
+                        background-color: var.$bg-color-dark;
+                    }
+
+                    &--silver{
+                        background: linear-gradient(215deg,#919292 0%, #dfe0e1 100%);
+                    }
+
+                    &--gold{
+                        background: linear-gradient(215deg,#AF8726 0%, #F8F08B 100%);
+                    }
+                }
+
+                &__text{
+                   font-size: 0.6rem;
+                   margin: 0;
+                   text-align: center;
+                }
+            }
+        }
+
+        .details-pricing{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px; 
+
+            &__price{
+                font-weight: 700;
+                font-size: 1.2rem;
+                margin: 0;                   
+            }
+
+            &__stock{
+                margin: 0;
+                display: flex;
+                align-items: center;
+                font-size: 0.8rem;
+
+                &--indicator{
+                    border-radius: 50%;
+                    width: 13px;
+                    height: 13px;
+                    background-color: #008107;
+                    align-self: center;
+                    margin-left: 5px;
+                }
+            }
+
+        }
+
+        .details-action{
+            display: flex;
+            justify-content: space-between;
+
+            .details-count{
+                display: flex;
+                align-items: center;
+                margin-right: 30px;
+
+                &__increment{
+                    background-color: transparent;
+                    border: none;
+                    font-size: 1.5rem;
+                    padding: 0;
+                    line-height: 0;
+                }
+
+                &__amount{
+                    font-size: 0.875rem;
+                    margin: 0 20px;
+                }
+            }
+
+            &__add-btn{
+                    background-color: var.$action-btn-color;
+                    box-shadow: 2px 2px 7px 0 var.$bg-color-light-gray;
+                    border: none;
+                    color: var.$font-color-light;
+                    border-radius: 3px;
+                    padding: 10px 0;
+                    font-weight: 300;
+                    font-size: 0.875rem;
+                    width: 100%;
+            }
+        }
+    }
+}
+
+.border{
+    width: 80vw;
+    border-top: 2px solid var.$bg-color-light-gray;
+    margin: 0 auto 30px auto;
+}
+
+.specifications{
+    padding: 0 20px;
+    margin-bottom: 30px;
+
+    &__title{
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .specification-info-table{
+        border-collapse: collapse;
+        border: none;
+        font-size: 1rem;
+        width: 100%;
+
+        .specification-info-row{
+            &:nth-of-type(odd) {
+                background-color: var.$bg-color-lighter-gray;
+            }
+
+            &__name{
+                border-right: 1px solid var.$bg-color-light-gray;
+                text-align: center;
+                padding: 7px 0;
+                font-weight: 600;
+                width: 45%;
+            }
+
+            &__text{
+                text-align: center;
+                padding: 7px 0;
+            }
+        }
+    }
+}
