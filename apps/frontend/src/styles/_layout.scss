@@ -923,3 +923,116 @@
         }
     }
 }
+
+.login-container {
+    margin-bottom: 30px;
+    padding: 0 3vw;
+
+    .error-message {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .registered-customers{
+        background-color: var.$bg-color-light;
+        padding: 20px 10px;
+        margin-bottom: 25px;
+        box-shadow: 2px 2px 5px 0 var.$bg-color-light-gray;
+        @include mix.screenMd(){
+            padding: 20px;
+        }
+
+        &__title{
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        &__subtitle{
+            font-size: 0.85rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        
+        .login-form{
+            display: flex;
+            flex-direction: column;
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+            
+                &__label {
+                    margin-bottom: 5px;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+
+                    &--highlight{
+                        color: var.$font-color-highlight;
+                    }
+                }
+
+                &__input{
+                    font-size: 1rem;
+                    box-shadow: 2px 2px 5px 0 var.$bg-color-light-gray;
+                    border: none;
+                    background-color: var.$bg-color-lighter-gray;
+                    box-sizing: border-box;
+                    padding: 5px;
+                }
+            }
+
+            &__sign-in-btn{
+                background-color: var.$action-btn-color;
+                box-shadow: 2px 2px 7px 0 var.$bg-color-light-gray;
+                border: none;
+                color: var.$font-color-light;
+                border-radius: 3px;
+                padding: 10px 35px;
+                margin: 20px 0;
+            }
+
+        }
+
+        &__fogort-password{
+            font-size: 0.875rem;
+            margin: 0;
+        }
+    }
+
+    .new-customer{
+        display: flex;
+        flex-direction: column;
+        background-color: var.$bg-color-light;
+        padding: 20px 10px;
+        box-shadow: 2px 2px 5px 0 var.$bg-color-light-gray;
+        text-align: center;
+        @include mix.screenMd(){
+            padding: 20px;
+        }
+
+        &__title{
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        &__subtitle{
+            font-size: 0.85rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        &__register-btn{
+            background-color: var.$action-btn-color;
+            box-shadow: 2px 2px 7px 0 var.$bg-color-light-gray;
+            border: none;
+            color: var.$font-color-light;
+            border-radius: 3px;
+            padding: 10px 35px;
+        }
+    }
+}
