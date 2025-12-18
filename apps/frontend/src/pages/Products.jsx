@@ -117,11 +117,11 @@ export default function Products(){
                 </div>
                 <ul className="products-list">
                     {
-                        filteredData.map((product)=> {
+                        filteredData.map((product, index)=> {
                             return(
                                 <li key={product.name} className="list-product">
                                     <button className="list-product__compare-btn">Compare <FiSliders className="list-product__compare-btn--icon"/></button>
-                                    <Link className="product-info" to="/details">
+                                    <Link className="product-info" to={`/details/${product.name}`}>
                                         <img className="product-info__picture" src={product.variants[0].imageURL || "https://placehold.co/200x100"} alt={product.name} />
                                         <h3 className="product-info__title">{product.name}</h3>
                                         <p className="product-info__type">(Digital Output)</p>

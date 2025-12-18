@@ -7,6 +7,7 @@ import Home from "./pages/Home"
 import Contact from "./pages/Contact"
 import Products from "./pages/Products"
 import RegisterPage from "./pages/Register"
+import Details from "./pages/Details"
 
 function App() {
   const browserRouter = createBrowserRouter([{
@@ -36,6 +37,16 @@ function App() {
           const categories = await fetch("/api/categories").then(response => response.json())
 
           return { products, categories }
+        },
+        hydrateFallbackElement: <p>loading...</p>
+      },
+      {
+        path: "/details/:productId",
+        element: <Details/>,
+        loader: async () => {
+          const products = await fetch("/api/products").then(response => response.json())
+
+          return { products }
         },
         hydrateFallbackElement: <p>loading...</p>
       },

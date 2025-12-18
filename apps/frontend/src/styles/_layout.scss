@@ -535,19 +535,20 @@
         padding: 0 4vw;
         margin: 0;
         gap: 20px;
+        align-items: start;
         @include mix.mediaScreenMin(600px){
-            grid-template-columns: auto auto;
+            grid-template-columns: 1fr 1fr;
         }
         @include mix.mediaScreenMin(768px){
             padding: 0 25px 0 0;
         }
         @include mix.mediaScreenMin(1100px){
             padding: 0 25px 0 0;
-            grid-template-columns: auto auto auto;
+            grid-template-columns: 1fr 1fr 1fr;
         }
         @include mix.screenXxl(){
             padding: 0 25px 0 0;
-            grid-template-columns: auto auto auto auto;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
         }
 
         .list-product{
@@ -555,6 +556,7 @@
             flex-direction: column;
             background-color: var.$bg-color-light;
             padding: 15px;
+            height: auto;
 
             &__compare-btn{
                 display: flex;
