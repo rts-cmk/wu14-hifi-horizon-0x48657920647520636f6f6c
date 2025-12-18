@@ -34,10 +34,10 @@ export default function LoginPage() {
     <>
       <h1 className="main__title">LOGIN</h1>
       <section className="login-container">
-        {error && <p className="error-message" style={{color: 'red'}}>{error}</p>}
         <article className="registered-customers">
           <h2 className="registered-customers__title">REGISTERED CUSTOMERS</h2>
           <p className="registered-customers__subtitle">If you have an account, sign in with your email address.</p>
+          {error && <p className="error-message" style={{color: 'red'}}>{error}</p>}
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label className="form-group__label" htmlFor="username">Username <span className="form-group__label--highlight">*</span></label>
