@@ -54,127 +54,127 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="login-container">
-      <h1>Register</h1>
-      {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
-      <form action={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Full name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            autoComplete="name"
-            placeholder="Full name"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            autoComplete="email"
-            placeholder="Email"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            autoComplete="new-password"
-            name="password"
-            placeholder="Password"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="passwordRepeated">Confirm Password</label>
-          <input
-            type="password"
-            id="passwordRepeated"
-            name="passwordRepeated"
-            autoComplete="new-password"
-            placeholder="Confirm Password"
-            required
-          />
-        </div>
+    <>
+      <h1 className="main__title">CREATE AN ACCOUNT</h1>
+      <section className="login-container">
+        <article className="registered-customers">
+          <h2 className="registered-customers__title">CREATE NEW CUSTOMER ACCOUNT</h2>
+          {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
+          <form className="login-form" action={handleSubmit}>
+            <div className="form-group">
+              <label className="form-group__label" htmlFor="username">Full name <span className="form-group__label--highlight">*</span></label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                autoComplete="name"
+                className="form-group__input" 
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-group__label" htmlFor="email">Email <span className="form-group__label--highlight">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autoComplete="email"
+                className="form-group__input" 
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-group__label" htmlFor="password">Password <span className="form-group__label--highlight">*</span></label>
+              <input
+                type="password"
+                id="password"
+                autoComplete="new-password"
+                name="password"
+                className="form-group__input" 
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-group__label" htmlFor="passwordRepeated">Confirm Password <span className="form-group__label--highlight">*</span></label>
+              <input
+                type="password"
+                id="passwordRepeated"
+                name="passwordRepeated"
+                autoComplete="new-password"
+                className="form-group__input" 
+                required
+              />
+            </div>
+            <h2 className="registered-customers__title">SHIPPING ADDRESS</h2>
+            <div className="form-group">
+              <label className="form-group__label" htmlFor="addressLine1">Address Line 1 <span className="form-group__label--highlight">*</span></label>
+              <input
+                type="text"
+                id="addressLine1"
+                name="addressLine1"
+                autoComplete="address-line1"
+                className="form-group__input" 
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-group__label" htmlFor="addressLine2">Address Line 2 (Optional) <span className="form-group__label--highlight">*</span></label>
+              <input
+                type="text"
+                id="addressLine2"
+                name="addressLine2"
+                autoComplete="address-line2"
+                className="form-group__input" 
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-group__label" htmlFor="city">City <span className="form-group__label--highlight">*</span></label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                autoComplete="address-level2"
+                className="form-group__input" 
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-group__label" htmlFor="state">State/Province <span className="form-group__label--highlight">*</span></label>
+              <input
+                type="text"
+                id="state"
+                name="state"
+                className="form-group__input" 
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-group__label" htmlFor="postalCode">Postal Code <span className="form-group__label--highlight">*</span></label>
+              <input
+                type="text"
+                id="postalCode"
+                name="postalCode"
+                className="form-group__input" 
+                autoComplete="postal-code"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-group__label" htmlFor="country">Country <span className="form-group__label--highlight">*</span></label>
+              <input
+                type="text"
+                id="country"
+                name="country"
+                className="form-group__input"
+                autoComplete="country"
+                required
+              />
+            </div>
 
-        <h2>Shipping Address</h2>
-
-        <div className="form-group">
-          <label htmlFor="addressLine1">Address Line 1</label>
-          <input
-            type="text"
-            id="addressLine1"
-            name="addressLine1"
-            autoComplete="address-line1"
-            placeholder="Street address"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="addressLine2">Address Line 2 (Optional)</label>
-          <input
-            type="text"
-            id="addressLine2"
-            name="addressLine2"
-            autoComplete="address-line2"
-            placeholder="Apartment, suite, etc."
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="city">City</label>
-          <input
-            type="text"
-            id="city"
-            name="city"
-            autoComplete="address-level2"
-            placeholder="City"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="state">State/Province</label>
-          <input
-            type="text"
-            id="state"
-            name="state"
-            placeholder="State/Province"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="postalCode">Postal Code</label>
-          <input
-            type="text"
-            id="postalCode"
-            name="postalCode"
-            placeholder="Postal Code"
-            autoComplete="postal-code"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="country">Country</label>
-          <input
-            type="text"
-            id="country"
-            name="country"
-            placeholder="Country"
-            autoComplete="country"
-            required
-          />
-        </div>
-
-        <button type="submit">Register</button>
-      </form>
-      <p style={{ marginTop: '1rem', textAlign: 'center' }}>
-        Already have an account? <Link to="/login">Login here</Link>
-      </p>
-    </div>
+            <button className="login-form__sign-in-btn" type="submit">Create an Account</button>
+          </form>
+        </article>
+      </section>
+    </>
   )
 }
