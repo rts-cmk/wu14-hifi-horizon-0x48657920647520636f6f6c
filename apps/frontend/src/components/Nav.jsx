@@ -1,26 +1,36 @@
 import { Link, useLoaderData, useNavigate } from "react-router";
-import { IoAdd, IoCaretUpSharp, IoCart, IoClose, IoMenu, IoPerson, IoRemove, IoSearch } from "react-icons/io5";
+import { IoCaretUpSharp, IoCart, IoClose, IoMenu, IoPerson, IoSearch } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/Auth.jsx"
 
 export default function Nav() {
 
   const { categories: categoriesData } = useLoaderData()
+  const {products: productsdata} = useLoaderData()
+  const [searchData, setSearchData] = useState(null)
 
   const [headerDisplay, setHeaderDisplay] = useState(false)
   const [searchbarDisplay, setSearchbarDisplay] = useState(false)
   const [categoriesDisplay, setCategoriesDisplay] = useState(false)
+  const [searchesDisplay, setSearchesDisplay] = useState(false)
   const [cartDisplay, setCartDisplay] = useState(false)
   const [showLoginOption, setShowLoginOptions] = useState(false)
+  const [searchValue, setSearchValue] = useState(null)
+  const [searchTrigger, setSearchTrigger] = useState(true)
   
   const { auth } = useAuth()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    setSearchData(productsdata.filter((product) => product.name.includes(searchValue)))
+  },[searchTrigger])
 
   const handleHeaderClick = () => {
     if (headerDisplay === false) {
       setHeaderDisplay(true)
       setSearchbarDisplay(false)
       setCartDisplay(false)
+      setSearchesDisplay(false)
     } else {
       setHeaderDisplay(false)
       setCategoriesDisplay(false)
@@ -33,6 +43,7 @@ export default function Nav() {
       setHeaderDisplay(true)
       setSearchbarDisplay(false)
       setCartDisplay(false)
+      setSearchesDisplay(false)
     } else {
       setCategoriesDisplay(false)
       navigate("/products")
@@ -57,7 +68,14 @@ export default function Nav() {
         setCartDisplay(false)
       } else {
         setSearchbarDisplay(false)
+        setSearchesDisplay(false)
       }
+    }else{
+        if(searchValue !== null){
+            setSearchTrigger(searchTrigger ? false : true)
+            setSearchesDisplay(true)
+            setCategoriesDisplay(false)
+        }
     }
   }
 
@@ -66,7 +84,6 @@ export default function Nav() {
       setShowLoginOptions(true);
       return setTimeout(() => {
         document.addEventListener("click", () => {
-          console.log("doing 2")
           setShowLoginOptions(false)
         }, { once: true })
 
@@ -82,8 +99,23 @@ export default function Nav() {
       setHeaderDisplay(false)
       setCategoriesDisplay(false)
       setSearchbarDisplay(false)
+      setSearchesDisplay(false)
     } else {
       setCartDisplay(false)
+    }
+  }
+
+  const handleInputKeyPress = (e) => {
+    if(e.key === "Enter"){
+        setSearchTrigger(searchTrigger ? false : true)
+        setSearchesDisplay(true)
+        setCategoriesDisplay(false)
+        setHeaderDisplay(false)
+        setCartDisplay(false)
+    }
+    
+    if(e.key === "Backspace"){
+        setSearchesDisplay(false)
     }
   }
 
@@ -96,6 +128,23 @@ export default function Nav() {
             {
               categoriesData.map((category) => {
                 return <li key={category.id} onClick={() => closeCategoryClick()} className="categories-list__category"><Link className="categories-list__link" to={`/products?category=${category.name}`}>{category.name}</Link></li>
+              })
+            }
+          </ul>
+        </article>
+        <article className="searches" style={{ display: searchesDisplay ? "flex" : "none" }}>
+          <button onClick={() => setSearchesDisplay(false)} className="searches__close-btn"><IoClose/></button>
+          <ul className="searches-list">
+            { searchData !== null &&
+              searchData.map((product) => {
+                return(
+                    <li key={product.name} className="searches-item">
+                        <Link className="searches-link" to={`/details/${product.name}`}>
+                            <img className="searches-link__picture" src={product.variants[0].imageURL || "https://placehold.co/200x100"} alt={product.name} />
+                            <h2 className="searches-link__title">{product.name}</h2>
+                        </Link>
+                    </li>
+                ) 
               })
             }
           </ul>
@@ -119,14 +168,14 @@ export default function Nav() {
       </section>
       <section className="navigation-section">
         <header className={`header header--display-${headerDisplay}`}>
-          <Link className="header__link" to="/"><img className="header__logo" src="hifi_logo.png" alt="HiFi logo" /></Link>
+          <Link className="header__link" to="/"><img className="header__logo" src="/hifi_logo.png" alt="HiFi logo" /></Link>
           <button onClick={() => handleCategoriesClick()} className="header__shop">SHOP</button>
           <Link className="header__link" to="/about">ABOUT US</Link>
           <Link className="header__link" to="/contact">CONTACT US</Link>
         </header>
         <search className="searchbar">
-          <input id="search" className={`searchbar__input searchbar__input--display-${searchbarDisplay}`} type="text" placeholder="Search Product..." />
-          <button onClick={() => handleSearchbarClick()} className="searchbar__btn" type="submit"><IoSearch className={`searchbar__btn--color-${searchbarDisplay}`} /></button>
+          <input id="search" onKeyDown={(e) => handleInputKeyPress(e)} onChange={(e) => setSearchValue(e.target.value)} className={`searchbar__input searchbar__input--display-${searchbarDisplay}`} type="text" placeholder="Search Product..." />
+          <button onClick={() => {handleSearchbarClick()}} className="searchbar__btn" type="submit"><IoSearch className={`searchbar__btn--color-${searchbarDisplay}`} /></button>
         </search>
         <div className="navigation-section__profile">
           <button onClick={() => handleProfileClick()} className="navigation-section__profile__button"><IoPerson /></button>

@@ -111,6 +111,7 @@
                 padding: 12px 0 12px 17px;
                 font-size: 1rem;
                 box-sizing: border-box;
+                z-index: 4;
                 @include mix.screenMd(){
                     position: static;
                     padding: 0 0 0 10px;
@@ -191,21 +192,29 @@
             background-color: white;
             display: flex;
             flex-direction: column;
-           
             width: 10rem;
             position: absolute;
-            inset-block-start: anchor(end);
-            inset-inline-start: anchor(self-end);
+            inset-block-start: anchor(left);
+            inset-inline-start: anchor(left);
             position-anchor: --profile-button;
-            margin: -20px 0 0 10px;
+            border-radius: 3px;
+            padding: 7px;
+            margin: -20px 0 0 0px;
             &.hidden {
               display: none;
             }
             & a {
               text-decoration: none;
-              colot: black;
+              color: black;
               font-size: 1.15rem;
               font-weight: 600;
+              margin-bottom: 5px;
+
+              &:first-child{
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid var.$bg-color-light-gray;
+              }
             }
           }
         
@@ -415,6 +424,78 @@
                         padding: 10px 30px;
                         font-size: 1rem;
                         font-weight: 200;
+                    }
+                }
+            }
+        }
+
+        .searches{
+            width: 100%;
+            height: 200px;
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            background-color: var.$bg-color-light;
+            padding-top: 5vw;
+            align-items: center;
+            z-index: 2;
+            overflow-x: hidden;
+            border-top: 3px solid var.$bg-color-dark;
+            flex-direction: column;
+            @include mix.screenMd(){
+                width: 340px;
+                height: 300px;
+                top: 85px;
+                left: auto;
+                right: 8vw;
+                bottom: auto;
+                padding-top: 7px;
+                border-radius: 3px;
+                border: none;
+            }
+
+            &__close-btn{
+                background-color: transparent;
+                border: none;
+                font-size: 1.8rem;
+                line-height: 0;
+                align-self: end;
+            }
+
+            .searches-list{
+                list-style: none;
+                padding: 0 2vw;
+                margin: 0 0 30px 0;
+                @include mix.screenMd(){
+                    padding: 0 10px;
+                    margin: 0;
+                }
+
+                .searches-item{
+                    margin-bottom: 15px;
+                    border-bottom: 2px solid var.$bg-color-light-gray;
+                    padding-bottom: 20px;
+
+                    .searches-link{
+                        color: var.$font-color-dark;
+                        text-decoration: none;
+                        display: grid;
+                        grid-template-columns: 40% 55%;
+                        gap: 10px;
+                        justify-items: start;
+
+                        &__picture {
+                            width: 100%;
+                            aspect-ratio: 1/.5;
+                            object-fit: contain;
+                        }
+
+                        &__title{
+                            width: 100%;
+                            font-size: 1rem;
+                            text-wrap: wrap;
+                            white-space: wrap;
+                        }
                     }
                 }
             }

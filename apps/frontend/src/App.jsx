@@ -14,8 +14,9 @@ function App() {
     element: <Layout />,
     loader: async () => {
       const categories = await fetch("/api/categories").then(response => response.json())
+      const products = await fetch("/api/products").then(response => response.json())
 
-      return { categories }
+      return { categories, products }
     },
     hydrateFallbackElement: <p>loading...</p>,
     children: [
