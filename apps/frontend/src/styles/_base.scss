@@ -1,0 +1,12 @@
+@use "variables" as var;
+
+body{
+    margin: 0;
+    background-color: var.$bg-color-lightest-gray;
+    font-family: var.$main-font;
+}
+
+button{
+    cursor: pointer;
+    font-family: var.$main-font;
+}
